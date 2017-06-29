@@ -38,7 +38,7 @@
                     <div class="col-md-3">
                         <div class="kwiqpick-logo">
                             <a href="index.php">
-                                <img src="images/Kwiqpick_Logo_CB202D.png" alt="Kwiqpick">
+                                <img src="images/ep4f(1).png" alt="Kwiqpick">
                             </a>
                         </div>
                     </div>
@@ -183,7 +183,6 @@
             <div class="col-md-4 blog-sidebar">
                 <div class="blog-widget">
                     <div class="well">
-                        <h3>Search</h3>
                         <form action="" method="post">
                             <div class="input-group">
                                 <input type="text" name="search" class="form-control"
@@ -199,6 +198,10 @@
                     </div>
                 </div>
                 <div class="blog-widget color-widget">
+                    <h3>Get the Kwiqpick app</h3>
+                    <a href="javascript:void(0);" target="_blank">
+                        <img src="images/google-play-badge.png" alt="Play Store">
+                    </a>
                     <h3>Subscribe</h3>
                     <p>Sign up to receive updates and latest new things from us everyday.
                         And i will not spam promise.</p>
