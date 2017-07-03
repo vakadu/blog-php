@@ -48,7 +48,7 @@ nowrap" cellspacing="0" width="100%">
                 </a>
                </td>";
             echo "<td>
-               <a rel='{$user_id}' href='javascript:void(0)' class='delete_user btn 
+               <a rel='{$user_id}' href='javascript:void(0);' class='delete_user btn 
                btn-danger btn-xs' data-toggle='modal' data-target='.delete-modal'><i 
                class='fa fa-trash-o'></i> 
                Delete

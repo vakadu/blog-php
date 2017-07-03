@@ -2,27 +2,10 @@
 
 <?php
 
-$per_page = 5;
-if (isset($_GET['page'])) {
-    $page = $_GET['page'];
-} else {
-    $page = "";
-}
-if ($page == "" || $page == 1) {
-    $page_1 = 0;//for index page
-} else {
-    $page_1 = ($page * $per_page) - $per_page;//it will give us five every page
-}
-
-$post_query_count = "SELECT * FROM posts";
-$find_count = mysqli_query($connection, $post_query_count);
-$count = mysqli_num_rows($find_count);
-$count = ceil($count / $per_page);//for making number integer
-
 if (isset($_POST['submit'])) {
 
     $search = $_POST['search'];
-    $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search' ORDER BY post_id DESC LIMIT $page_1, $per_page";
+    $query = "SELECT * FROM posts WHERE post_tags LIKE '%$search' ORDER BY post_id DESC";
     $search_query = mysqli_query($connection, $query);
     if (!$search_query) {
         die("Query Failed " . mysqli_error($connection));
@@ -94,21 +77,10 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
-    <div class="article-pagination">
-        <ul>
-            <?php
-            for ($i = 1; $i <= $count; $i++) {
-                if ($i == $page) {
-                    echo "<li><a class='active' href='home.php?page={$i}'>{$i}</a> </li>";
-                } else {
-                    echo "<li><a href='home.php?page={$i}'>{$i}</a></li>";
-                }
-            }
-            ?>
-        </ul>
-    </div>
-    </div>
-
+            </div>
 <?php include "includes/article_sidebar.php"; ?>
+        </div>
+    </div>
+</section>
 
 <?php include "includes/footer.php"; ?>

@@ -67,7 +67,7 @@ nowrap" cellspacing="0" width="100%">
                 </a>
                </td>";
         echo "<td>
-               <a rel='{$post_id}' href='javascript:void(0)' class='delete_post btn 
+               <a rel='{$post_id}' href='javascript:void(0);' class='delete_post_link btn 
                btn-danger btn-xs' data-toggle='modal' data-target='.delete-modal'><i 
                class='fa fa-trash-o'></i> 
                Delete
@@ -96,5 +96,6 @@ if (isset($_GET['delete'])){
     $delete_post_id = $_GET['delete'];
     $query = "DELETE FROM posts WHERE post_id = {$delete_post_id}";
     $delete_query = mysqli_query($connection, $query);
+
     redirect("posts.php");
 }

@@ -14,7 +14,7 @@
                 <button type="button" class="btn btn-default"
                         data-dismiss="modal">Close</button>
                 <a class="btn btn-danger
-                modal_delete_link" href="">Delete</a>
+                modal_delete_post" href="">Delete</a>
             </div>
 
         </div>
