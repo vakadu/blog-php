@@ -49,8 +49,11 @@
                                 <ul>
                                     <li><a href="javascript:void(0)"> <i class="fa
                                     fa-calendar">&nbsp;&nbsp;<?php echo $post_date?></i></a></li>
-                                    <li><a href="#"><i class="fa
-                                    fa-user">&nbsp;</i> <?php echo $post_author; ?></a></li>
+                                    <li><a href="authors_post.php?author=<?php echo
+                                        $post_author?>&p_id=<?php echo $post_id; ?>"><i
+                                        class="fa fa-user">&nbsp;</i> <?php echo $post_author;
+                                        ?></a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -87,10 +90,10 @@
                         <?php
                         for ($i = 1; $i <= $count; $i++){
                             if ($i == $page){
-                                echo "<li><a class='active' href='home.php?page={$i}'>{$i}</a> </li>";
+                                echo "<li><a class='active' href='index.php?page={$i}'>{$i}</a> </li>";
                             }
                             else{
-                                echo "<li><a href='home.php?page={$i}'>{$i}</a></li>";
+                                echo "<li><a href='index.php?page={$i}'>{$i}</a></li>";
                             }
                         }
                         ?>

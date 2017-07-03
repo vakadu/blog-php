@@ -75,20 +75,14 @@ if (isset($_POST['update_post'])){
 <form class="form-horizontal form-label-left" action="" method="post"
       enctype="multipart/form-data">
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Title <span
-                class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input id="title" class="form-control col-md-7 col-xs-12"
                    name="title" type="text" value="<?php echo $post_title; ?>">
         </div>
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category">Category
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <select class="form-control" name="category">
                 <?php
                 $query = "SELECT * FROM categories";
@@ -111,20 +105,14 @@ if (isset($_POST['update_post'])){
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="author">Author <span
-                class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input type="text" id="author" name="author" class="form-control col-md-7
             col-xs-12" value="<?php echo $post_author; ?>">
         </div>
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="status">Status
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <select class="form-control" name="status">
                 <option value='<?php echo $post_status; ?>'><?php echo ucfirst
                     ($post_status); ?></option>
@@ -141,10 +129,7 @@ if (isset($_POST['update_post'])){
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="image">Image <span
-                class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <img src="../images/<?php echo $post_image; ?>" width="200" alt="Image not
             displayed" class="img-responsive">
             <input type="file" id="image" name="image" class="form-control col-md-7
@@ -153,20 +138,14 @@ if (isset($_POST['update_post'])){
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tags">Tags <span
-                class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input type="text" id="tags" name="tags" class="form-control col-md-7
             col-xs-12" value="<?php echo $post_tags; ?>">
         </div>
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="content">Content <span
-                class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <textarea name="content" id="content" cols="30" rows="6" class="form-control
             col-md-7 col-xs-12"><?php echo $post_content; ?></textarea>
         </div>

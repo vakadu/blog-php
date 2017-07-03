@@ -33,6 +33,14 @@ if (isset($_POST['update_user'])){
 
     move_uploaded_file($user_tmp_image, "../images/$user_image");
 
+    if (empty($user_image)){
+        $query = "SELECT * FROM users WHERE user_id = $edit_user ";
+        $select_image = mysqli_query($connection, $query);
+        while ($row = mysqli_fetch_array($select_image)){
+            $user_image = $row['user_image'];
+        }
+    }
+
     $query  = "UPDATE users SET ";
     $query .= "user_firstname = '{$user_firstname}', ";
     $query .= "user_lastname = '{$user_lastname}', ";
@@ -65,40 +73,28 @@ if (isset($_POST['update_user'])){
 <form class="form-horizontal form-label-left" action="" method="post"
       enctype="multipart/form-data">
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="firstname">First Name
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input id="firstname" class="form-control col-md-7 col-xs-12"
                    name="first_name" type="text" value="<?php echo $user_firstname; ?>">
         </div>
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="lastname">Last Name
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input id="lastname" class="form-control col-md-7 col-xs-12"
                    name="last_name" type="text" value="<?php echo $user_lastname; ?>">
         </div>
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="username">Username
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input id="username" class="form-control col-md-7 col-xs-12"
                    name="username" type="text" value="<?php echo $username; ?>">
         </div>
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="image">Image <span
-                class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <img src="../images/<?php echo $user_image; ?>" width="200" alt="Image not
             displayed" class="img-responsive">
             <input type="file" id="user_image" name="user_image" class="form-control col-md-7
@@ -107,10 +103,7 @@ if (isset($_POST['update_user'])){
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="role">Role
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <select class="form-control" name="role">
                 <option value="<?php echo $user_role; ?>"><?php echo $user_role; ?></option>
                 <?php
@@ -126,20 +119,14 @@ if (isset($_POST['update_user'])){
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input id="user_email" class="form-control col-md-7 col-xs-12"
                    name="user_email" type="email" value="<?php echo $user_email; ?>">
         </div>
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password">Password
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input id="password" class="form-control col-md-7 col-xs-12"
                    name="user_password" type="password" value="<?php echo $user_password; ?>">
         </div>

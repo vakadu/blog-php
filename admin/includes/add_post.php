@@ -41,20 +41,14 @@ if (isset($_POST['create_post'])){
 <form class="form-horizontal form-label-left" action="" method="post"
       enctype="multipart/form-data">
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">Title <span
-                    class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input id="title" class="form-control col-md-7 col-xs-12"
                    name="title" placeholder="e.g Some title" type="text">
         </div>
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category">Category
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <select class="form-control" name="category">
                 <option value="">Choose Category</option>
                 <?php
@@ -76,20 +70,14 @@ if (isset($_POST['create_post'])){
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="author">Author <span
-                    class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input type="text" id="author" name="author" class="form-control col-md-7
-            col-xs-12">
+            col-xs-12" placeholder="Author Name">
         </div>
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="status">Status
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <select class="form-control" name="status">
                 <option value="draft">Select Status</option>
                 <option value="publish">Publish</option>
@@ -99,32 +87,22 @@ if (isset($_POST['create_post'])){
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="image">Image <span
-                    class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input type="file" id="image" name="image" class="form-control col-md-7
             col-xs-12">
         </div>
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tags">Tags <span
-                    class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input type="text" id="tags" name="tags" class="form-control col-md-7
-            col-xs-12">
+            col-xs-12" placeholder="Tags">
         </div>
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="content">Content <span
-                    class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
-            <textarea name="content" id="content" cols="30" rows="6" class="form-control
-            col-md-7 col-xs-12"></textarea>
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
+            <textarea name="content" id="content" cols="30" rows="6" class="form-control col-md-7 col-xs-12" placeholder="Content"></textarea>
         </div>
     </div>
 

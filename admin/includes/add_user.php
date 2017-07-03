@@ -40,50 +40,35 @@ if (isset($_POST['create_user'])){
 <form class="form-horizontal form-label-left" action="" method="post"
       enctype="multipart/form-data">
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="firstName">First
-            Name <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input id="firstName" class="form-control col-md-7 col-xs-12"
                    name="first_name" placeholder="e.g Vinod" type="text">
         </div>
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="lastName">Last Name
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input id="lastName" class="form-control col-md-7 col-xs-12"
                    name="last_name" placeholder="e.g Kumar" type="text">
         </div>
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="username">Username
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input type="text" id="username" name="username" class="form-control col-md-7
             col-xs-12" placeholder="e.g vakadu">
         </div>
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="image">Image <span
-                class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input type="file" id="image" name="user_image" class="form-control col-md-7
             col-xs-12">
         </div>
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="role">Role
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <select class="form-control" name="role">
                 <option value="subscriber">Select Status</option>
                 <option value="admin">Admin</option>
@@ -93,20 +78,14 @@ if (isset($_POST['create_user'])){
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email <span
-                class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input type="email" id="email" name="user_email" class="form-control col-md-7
             col-xs-12" placeholder="e.g vakadu10@gmail.com">
         </div>
     </div>
 
     <div class="item form-group">
-        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="user_password">Password
-            <span class="required">*</span>
-        </label>
-        <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input type="password" id="user_password" name="user_password"
                    class="form-control col-md-7 col-xs-12" placeholder="e.g abc123">
         </div>

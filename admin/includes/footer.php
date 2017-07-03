@@ -13,6 +13,14 @@
 <script src="vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Include all Editor plugins JS files. -->
+<script type="text/javascript" src="vendors/froala_editor/js/froala_editor.pkgd.min.js"></script>
+<!-- Include Code Mirror JS. -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
+
+<!-- WYSIWYG Editor -->
+<!--<script src="vendors/tinymce/js/tinymce/tinymce.min.js"></script>-->
 <!-- FastClick -->
 <script src="vendors/fastclick/lib/fastclick.js"></script>
 <!-- NProgress -->

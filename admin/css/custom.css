@@ -1,8 +1,10 @@
 
 html , body{
-	
  height:100%;
- 
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Merriweather', serif;
 }
  
 .full-width {
@@ -489,8 +491,8 @@ body .container.body .right_col {
 body {
     color: #73879C;
     background: #2A3F54;
-    font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
-    font-size: 13px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
     font-weight: 400;
     line-height: 1.471
 }
@@ -4263,4 +4265,8 @@ td a{
 
 .margintb20{
     margin: 20px 0;
+}
+
+.marginLeft{
+    margin-left: 8%;
 }
