@@ -112,7 +112,7 @@ form input[type=email] {
     background-color: #ffffff;
     width: 93%;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 800;
     color: #444444;
     /*padding-left: 10px;*/
     padding-right: 30px;
@@ -317,6 +317,7 @@ form textarea:-ms-input-placeholder {
  *
  */
 #header{
+    background: #cb202d;
     width: 100%;
     position: relative;
     display: block;
@@ -629,6 +630,11 @@ article.article-item .article-footer .share-social-article a i {
     transition-timing-function: cubic-bezier(0.42,0,0.58,1);
 }
 
+.article-pagination .active{
+    background-color: #cb202d;
+    color: #ffffff;
+}
+
 /**
  *	-------------------------------------------------------------------------------
  *	 ( 06 ) - Widgets
@@ -716,8 +722,37 @@ article.article-item .article-footer .share-social-article a i {
 
 .blog-sidebar .blog-widget .widget-body {
     display: inline-block;
-    padding: 20px 34px 55px 34px;
+    padding: 20px 34px 30px 34px;
     width: 100%;
+}
+
+.blog-sidebar .blog-widget .widget-body > ul {
+    list-style-type: none;
+    margin-top: -20px;
+    padding: 0;
+    display: block;
+}
+
+.blog-sidebar .blog-widget .widget-body > ul li {
+    padding: 5px 10px;
+    line-height: 10px;
+    font-size: 11px;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.blog-sidebar .blog-widget .widget-body > ul li a {
+    color: #444444;
+    text-decoration: none;
+}
+
+.blog-sidebar .blog-widget .widget-body > ul li a:hover {
+    color: #cb202d;
+}
+
+.sidebar .widget .widget-content > ul li:last-child {
+    margin-bottom: -33px;
+    border-bottom: none;
 }
 
 .blog-widget .widget-tags {

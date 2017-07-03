@@ -1,85 +1,72 @@
-<!DOCTYPE html>
-<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!-->
-<html lang="en">
-<head>
-    <title>Kwiqpick | Blog</title>
-    <!-- Kwiqpick Blog Page -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="generator" content="Kwiqpick - Responsive Blog Landing Page">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" lang="en" content="Kwiqpick - Responsive Blog Landing Page">
-    <meta name="keywords" lang="en" content="Kwiqpick, blog, landing blog page,
-    mobile-landing page, responsive, responsive blog page,
-    fully responsive, Orbit-app landing page">
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    <!--Custom Fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,400i,700" rel="stylesheet">
-    <!--Font Awesome-->
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-    <!--Bootstrap-->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.min.css">
-    <!--Kwiqpick blog css-->
-    <link rel="stylesheet" href="css/blog.css">
-</head>
-<body>
-
-<header id="header">
-    <div class="nav-container">
-        <div class="container">
-            <div class="row">
-                <nav class="main-navigation">
-                    <div class="col-md-3">
-                        <div class="kwiqpick-logo">
-                            <a href="index.php">
-                                <img src="images/ep4f(1).png" alt="Kwiqpick">
-                            </a>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-    </div>
-</header>
+<?php include "includes/header.php"; ?>
 
 <section class="articles">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-sm-8">
+                <?php
+
+                $per_page = 5;
+                if (isset($_GET['page'])){
+                    $page = $_GET['page'];
+                }
+                else{
+                    $page = "";
+                }
+                if ($page == "" || $page == 1){
+                    $page_1 = 0;//for index page
+                }
+                else{
+                    $page_1 = ($page * $per_page) - $per_page;//it will give us five every page
+                }
+
+                $post_query_count = "SELECT * FROM posts";
+                $find_count = mysqli_query($connection, $post_query_count);
+                $count = mysqli_num_rows($find_count);
+                $count = ceil($count / $per_page);//for making number integer
+
+
+                $query = "SELECT * FROM posts WHERE post_status = 'publish' ORDER BY post_id DESC LIMIT $page_1, $per_page";
+                $select_all_posts = mysqli_query($connection, $query);
+                while ($row = mysqli_fetch_assoc($select_all_posts)) {
+                    $post_id = $row['post_id'];
+                    $post_title = $row['post_title'];
+                    $post_author = $row['post_author'];
+                    $post_date = $row['post_date'];
+                    $post_image = $row['post_image'];
+                    $post_content = substr($row['post_content'], 0, 500) . " [.....]";
+                    $post_status = $row['post_status'];
+
+                    ?>
                 <article class="article-item">
                     <div class="enter-media">
                         <div class="article-heading">
                             <h2>
-                                <a href="post.php">6 Restaurants In Hyderabad Geetha, An Avid Swiggy User, Loves To Order From Frequently!</a>
+                                <a href="post.php?p_id=<?php echo $post_id; ?>"><?php echo
+                                    $post_title; ?></a>
                             </h2>
                             <div class="enter-date">
                                 <ul>
                                     <li><a href="javascript:void(0)"> <i class="fa
-                                    fa-calendar">&nbsp;&nbsp;28-06-2017</i></a> </li>
+                                    fa-calendar">&nbsp;&nbsp;<?php echo $post_date?></i></a></li>
                                     <li><a href="#"><i class="fa
-                                    fa-user">&nbsp;</i> Team Kwiqpick</a> </li>
+                                    fa-user">&nbsp;</i> <?php echo $post_author; ?></a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="article-body">
-                            <img src="images/blog-header-1-750x410.jpg" alt="Image">
+                            <img src="images/<?php echo $post_image; ?>" alt="Image">
                             <p>
-                                Team Swiggy spoke to Geetha, a Swiggy super user in Hyderabad’s twin city, Secunderabad. Geetha was introduced to Swiggy by a friend, and she’s never looked back since. In fact, when we first spoke to her, a Hunger Savior was at her doorstep, delivering her order!   “Swiggy is popular in Hyderabad because of me!” […]
+                                <?php echo $post_content; ?>
                             </p>
                         </div>
                         <div class="article-footer">
                             <div class="row">
-                                <div class="col-md-5">
-                                    <a href="post.php" class="button blog-button">Read
-                                        More</a>
+                                <div class="col-md-5 col-sm-12 col-xs-12">
+                                    <a href="post.php?p_id=<?php echo $post_id; ?>"
+                                       class="button blog-button">Read More</a>
                                 </div>
-                                <div class="col-md-7">
+                                <div class="col-md-7 col-sm-12 col-xs-12">
                                     <div class="share-social-article">
                                         <a href="javascript:;"><i class="fa
                                         fa-facebook"></i></a>
@@ -91,159 +78,30 @@
                         </div>
                     </div>
                 </article>
-                <article class="article-item">
-                    <div class="enter-media">
-                        <div class="article-heading">
-                            <h2>
-                                <a href="post.php">6 Restaurants In Hyderabad Geetha, An Avid Swiggy User, Loves To Order From Frequently!</a>
-                            </h2>
-                            <div class="enter-date">
-                                <ul>
-                                    <li><a href="javascript:void(0)"> <i class="fa
-                                    fa-calendar">&nbsp;&nbsp;28-06-2017</i></a> </li>
-                                    <li><a href="#"><i class="fa
-                                    fa-user">&nbsp;</i> Team Kwiqpick</a> </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="article-body">
-                            <img src="images/blog-header-1-750x410.jpg" alt="Image">
-                            <p>
-                                Team Swiggy spoke to Geetha, a Swiggy super user in Hyderabad’s twin city, Secunderabad. Geetha was introduced to Swiggy by a friend, and she’s never looked back since. In fact, when we first spoke to her, a Hunger Savior was at her doorstep, delivering her order!   “Swiggy is popular in Hyderabad because of me!” […]
-                            </p>
-                        </div>
-                        <div class="article-footer">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <a href="post.php" class="button blog-button">Read
-                                        More</a>
-                                </div>
-                                <div class="col-md-7">
-                                    <div class="share-social-article">
-                                        <a href="javascript:;"><i class="fa
-                                        fa-facebook"></i></a>
-                                        <a href="javascript:;"><i class="fa
-                                        fa-linkedin"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-                <article class="article-item">
-                    <div class="enter-media">
-                        <div class="article-heading">
-                            <h2>
-                                <a href="post.php">6 Restaurants In Hyderabad Geetha, An Avid Swiggy User, Loves To Order From Frequently!</a>
-                            </h2>
-                            <div class="enter-date">
-                                <ul>
-                                    <li><a href="javascript:void(0);"> <i class="fa
-                                    fa-calendar">&nbsp;&nbsp;28-06-2017</i></a> </li>
-                                    <li><a href="#"><i class="fa
-                                    fa-user">&nbsp;</i> Team Kwiqpick</a> </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="article-body">
-                            <img src="images/blog-header-1-750x410.jpg" alt="Image">
-                            <p>
-                                Team Swiggy spoke to Geetha, a Swiggy super user in Hyderabad’s twin city, Secunderabad. Geetha was introduced to Swiggy by a friend, and she’s never looked back since. In fact, when we first spoke to her, a Hunger Savior was at her doorstep, delivering her order!   “Swiggy is popular in Hyderabad because of me!” […]
-                            </p>
-                        </div>
-                        <div class="article-footer">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <a href="post.php" class="button blog-button">Read
-                                        More</a>
-                                </div>
-                                <div class="col-md-7">
-                                    <div class="share-social-article">
-                                        <a href="javascript:void(0);"><i class="fa
-                                        fa-facebook"></i></a>
-                                        <a href="javascript:void(0);"><i class="fa
-                                        fa-linkedin"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
+
+                <?php
+                }
+                ?>
                 <div class="article-pagination">
                     <ul>
-                        <li><span>1</span></li>
-                        <li><a href="javascript:;">2</a></li>
-                        <li><a href="javascript:;">3</a></li>
-                        <li><a href="javascript:;"> <i class="fa fa-chevron-right"></i>
-                            </a></li>
+                        <?php
+                        for ($i = 1; $i <= $count; $i++){
+                            if ($i == $page){
+                                echo "<li><a class='active' href='home.php?page={$i}'>{$i}</a> </li>";
+                            }
+                            else{
+                                echo "<li><a href='home.php?page={$i}'>{$i}</a></li>";
+                            }
+                        }
+                        ?>
                     </ul>
                 </div>
             </div>
 
-            <div class="col-md-4 blog-sidebar">
-                <div class="blog-widget">
-                    <div class="well">
-                        <form action="" method="post">
-                            <div class="input-group">
-                                <input type="text" name="search" class="form-control"
-                                       placeholder="Search">
-                                <span class="input-group-btn">
-                                    <button name="submit" class="btn btn-search"
-                                            type="submit">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="blog-widget color-widget">
-                    <h3>Get the Kwiqpick app</h3>
-                    <a href="javascript:void(0);" target="_blank">
-                        <img src="images/google-play-badge.png" alt="Play Store">
-                    </a>
-                    <h3>Subscribe</h3>
-                    <p>Sign up to receive updates and latest new things from us everyday.
-                        And i will not spam promise.</p>
-                    <div class="widget-forms">
-                        <form class="subscribe-form">
-                            <input type="text" placeholder="Subscribe">
-                            <a href="" class="sidebar-button button-color">Subscribe</a>
-                        </form>
-                    </div>
-                </div>
-<!--                <div class="blog-widget">-->
-<!--                    <h3>Popular Posts</h3>-->
-<!--                </div>-->
-            </div>
+            <?php include "includes/article_sidebar.php"; ?>
+
         </div>
     </div>
 </section>
 
-<footer id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <nav>
-                    <ul class="list-unstyled list-inline">
-                        <li><a href="">Careers</a> </li>
-                        <li><a href="">Contact Us</a> </li>
-                        <li><a href="">FAQ</a> </li>
-                        <li><a href="">Privacy Policy</a> </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </div>
-    <!-- Back to top Section Begins -->
-    <a href="javascript:void(0);" class="back-to-top hidden-xs hidden-sm"><i class="fa
-    fa-angle-up" aria-hidden="true"></i></a>
-    <!-- Back to top Section Ends -->
-</footer>
-
-<script src="js/jquery-3.2.1.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/SmoothScroll.js"></script>
-<script src="js/blog.js"></script>
-</body>
-</html>
+<?php include "includes/footer.php"; ?>
