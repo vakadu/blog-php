@@ -1,7 +1,6 @@
 <?php include "delete_post.php"; ?>
 
-<table id="datatable-responsive" class="table table-striped table-bordered dt-responsive
-nowrap" cellspacing="0" width="100%">
+<table id="datatable-responsive" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
     <tr>
         <th>ID</th>
@@ -13,9 +12,7 @@ nowrap" cellspacing="0" width="100%">
         <th>Tags</th>
         <th>Comments</th>
         <th>Date</th>
-        <th>View</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th>Take Action</th>
     </tr>
     </thead>
     <tbody>
@@ -49,37 +46,32 @@ nowrap" cellspacing="0" width="100%">
         echo "<tr>";
         echo "<td>{$post_id}</td>";
         echo "<td>{$post_author}</td>";
-        echo "<td>{$post_title}</td>";
+        echo "<td class='col-sm-1 readextra'>{$post_title}</td>";
         echo "<td>{$category_title}</td>";
         echo "<td>{$post_status}</td>";
         echo "<td><img src='../images/{$post_image}' height='40px'></td>";
-        echo "<td>{$post_tags}</td>";
-        echo "<td>{$post_comment_count}</td>";
+        echo "<td class='col-sm-1'>{$post_tags}</td>";
+
+        $query = "SELECT * FROM comments WHERE comment_post_id = {$post_id}";
+        $select_query = mysqli_query($connection, $query);
+        confirmQuery($select_query);
+        $row = mysqli_fetch_array($select_query);
+        $comment_id = $row['comment_id'];
+        $comment_count = mysqli_num_rows($select_query);
+        echo "<td><a href='post_comment.php?id={$post_id}' style='color: #169F85' </i> {$comment_count}</a></td>";
+
         echo "<td>{$post_date}</td>";
         echo "<td>
-                <a href='../post.php?p_id={$post_id}' class='btn btn-primary btn-xs'><i 
-                class='fa fa-folder'></i> View
+                <a href='../post.php?p_id={$post_id}' class='btn btn-success'><i class='fa fa-folder'></i>
+                </a>
+                <br>
+                <a href='posts.php?source=edit_post&p_id={$post_id}' class='btn btn-info '><i class='fa fa-pencil'></i> 
+                </a>
+                <br>
+                <a onclick=\"javascript:; return confirm('Are you sure you want to delete')\" href='posts.php?delete={$post_id}' class='btn btn-danger'><i
+                 class='fa fa-trash-o'></i> 
                 </a>
               </td>";
-        echo "<td>
-                <a href='posts.php?source=edit_post&p_id={$post_id}' class='btn btn-info 
-                btn-xs'><i class='fa fa-pencil'></i> Edit
-                </a>
-               </td>";
-        echo "<td>
-               <a rel='{$post_id}' href='javascript:void(0);' class='delete_post_link btn 
-               btn-danger btn-xs' data-toggle='modal' data-target='.delete-modal'><i 
-               class='fa fa-trash-o'></i> 
-               Delete
-                </a>
-                <!--
-                <a onclick=\"javascript: return confirm('Are you sure you want to delete')\"
-                 href='posts.php?delete={}' class='btn btn-danger btn-xs'><i 
-                 class='fa fa-trash-o'></i> Delete
-                </a>
-                -->
-                
-               </td>";
         echo "</tr>";
     }
 

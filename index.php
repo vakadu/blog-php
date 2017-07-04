@@ -42,17 +42,14 @@
                     <div class="enter-media">
                         <div class="article-heading">
                             <h2>
-                                <a href="post.php?p_id=<?php echo $post_id; ?>"><?php echo
-                                    $post_title; ?></a>
+                                <a href="post.php?p_id=<?php echo $post_id; ?>" target="_blank"><?php echo $post_title; ?></a>
                             </h2>
                             <div class="enter-date">
                                 <ul>
                                     <li><a href="javascript:void(0)"> <i class="fa
                                     fa-calendar">&nbsp;&nbsp;<?php echo $post_date?></i></a></li>
                                     <li><a href="authors_post.php?author=<?php echo
-                                        $post_author?>&p_id=<?php echo $post_id; ?>"><i
-                                        class="fa fa-user">&nbsp;</i> <?php echo $post_author;
-                                        ?></a>
+                                        $post_author?>&p_id=<?php echo $post_id; ?>" target="_blank"><i class="fa fa-user">&nbsp;</i> <?php echo $post_author; ?></a>
                                     </li>
                                 </ul>
                             </div>
@@ -67,7 +64,7 @@
                             <div class="row">
                                 <div class="col-md-5 col-sm-12 col-xs-12">
                                     <a href="post.php?p_id=<?php echo $post_id; ?>"
-                                       class="button blog-button">Read More</a>
+                                       class="button blog-button" target="_blank">Read More</a>
                                 </div>
                                 <div class="col-md-7 col-sm-12 col-xs-12">
                                     <div class="share-social-article">

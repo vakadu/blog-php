@@ -12,14 +12,6 @@
         <div class="page-title">
             <div class="title_left">
                 <h3>Dashboard</h3>
-<!--                --><?php
-//
-//                echo $_SESSION['username'];
-//                echo $_SESSION['firstname'];
-//                echo $_SESSION['lastname'];
-//                echo $_SESSION['user_role'];
-//
-//                ?>
             </div>
             <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">

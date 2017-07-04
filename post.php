@@ -61,6 +61,77 @@ if (isset($_GET['p_id'])){
                         </div>
                     </div>
                 </article>
+
+                    <article class="article-item">
+                        <div class="enter-media">
+                            <div class="article-heading hasMargin">
+                                <h2>
+                                    Comments
+                                </h2>
+                            </div>
+                            <div id="comments" class="comments-area">
+                                <div class="comments-wrapper">
+                                    <ol class="comment-list">
+                                        <li class="comment">
+                                            <?php
+
+                                            $query  = "SELECT * FROM comments WHERE comment_post_id = {$the_post_id} ";
+                                            $query .= "AND comment_status = 'Approved' ";
+                                            $query .= "ORDER BY comment_id DESC";
+                                            $select_comment_query = mysqli_query($connection, $query);
+                                            confirmQuery($select_comment_query);
+                                            while ($row = mysqli_fetch_assoc($select_comment_query)) {
+
+                                            $comment_author = $row['comment_author'];
+                                            $comment_date = $row['comment_date'];
+                                            $comment_content = $row['comment_content'];
+
+                                            ?>
+                                            <article>
+                                                <div class="comment-body">
+                                                    <div class="meta-data">
+                                                    <span class="comment-author"><?php echo $comment_author; ?></span>
+                                                        <span class="comment-date"> <?php echo $comment_date; ?></span>
+                                                    </div>
+                                                    <div class="comment-content">
+                                                        <p><?php echo $comment_content; ?></p>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                                <?php
+                                            }
+                                            ?>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                <?php
+
+                if (isset($_POST['create_comment'])){
+
+                    $the_post_id = $_GET['p_id'];
+                    $comment_author = $_POST['name'];
+                    $comment_email = $_POST['email'];
+                    $comment_content = $_POST['content'];
+
+                    if (!empty($comment_author) && !empty($comment_email) && !empty
+                        ($comment_content)){
+
+                        $query  = "INSERT INTO comments(comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date) ";
+                        $query .= "VALUES({$the_post_id}, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'Unapproved', now())";
+                        $insert_query = mysqli_query($connection, $query);
+                        confirmQuery($insert_query);
+                    }
+                    else{
+                        echo "<script>alert('Fields cannot be empty')</script>";
+                    }
+                }
+
+                ?>
+
                 <article class="article-item">
                     <div class="enter-media">
                         <div class="article-heading hasMargin">
@@ -69,18 +140,19 @@ if (isset($_GET['p_id'])){
                             </h2>
                         </div>
                         <div class="article-body article-comments">
-                            <form>
+                            <form method="post">
                                 <div class="comment-form ">
                                     <p class="input-name"> NAME <span>*</span> </p>
                                     <input type="text" name="name" placeholder="">
                                     <p class="input-name"> E-MAIL <span>*</span> </p>
-                                    <input type="text" name="name" placeholder="">
+                                    <input type="text" name="email" placeholder="">
                                     <p class="input-name"> COMMENT</p>
-                                    <textarea placeholder=""></textarea>
+                                    <textarea placeholder="" name="content"></textarea>
                                 </div>
                                 <div class="comment-submit">
-                                    <a href="javascript:;" class="custom-buttons
-                                    button-color">Post Comment</a>
+                                    <button href="javascript:;" class="custom-buttons
+                                    button-color" name="create_comment">Post
+                                        Comment</button>
                                 </div>
                             </form>
                         </div>

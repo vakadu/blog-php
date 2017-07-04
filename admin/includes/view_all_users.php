@@ -13,8 +13,7 @@ nowrap" cellspacing="0" width="100%">
             <th>Role</th>
             <th>Admin</th>
             <th>Subscriber</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>Take Action</th>
         </tr>
         </thead>
         <tbody>
@@ -43,17 +42,13 @@ nowrap" cellspacing="0" width="100%">
             echo "<td><a href='users.php?change_to_admin={$user_id}' class='btn btn-success btn-xs'><i class='fa fa-user'></i> Admin</a></td>";
             echo "<td><a href='users.php?change_to_subscriber={$user_id}' class='btn btn-success btn-xs'><i class='fa fa-user'></i> Subscriber</a> </td>";
             echo "<td>
-                <a href='users.php?source=edit_user&edit_user={$user_id}' class='btn btn-info 
-                btn-xs'><i class='fa fa-pencil'></i> Edit
+                <a href='users.php?source=edit_user&edit_user={$user_id}' class='btn btn-info'><i class='fa fa-pencil'></i>
+                </a><br>
+                <a rel='{$user_id}' href='javascript:void(0);' class='delete_user btn 
+               btn-danger' data-toggle='modal' data-target='.delete-modal'><i 
+               class='fa fa-trash-o'></i> 
                 </a>
                </td>";
-            echo "<td>
-               <a rel='{$user_id}' href='javascript:void(0);' class='delete_user btn 
-               btn-danger btn-xs' data-toggle='modal' data-target='.delete-modal'><i 
-               class='fa fa-trash-o'></i> 
-               Delete
-                </a>
-                </td>";
             echo "</tr>";
         }
         ?>

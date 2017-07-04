@@ -1,26 +1,29 @@
 <?php
 
-function confirmQuery($result){
+function confirmQuery($result)
+{
 
     global $connection;
-    if (!$result){
+    if (!$result) {
         die("Query Failed " . mysqli_error($connection));
     }
 }
 
-function redirect($location){
+function redirect($location)
+{
 
     header("Location: " . $location);
 }
 
-function insert_category(){
+function insert_category()
+{
 
     global $connection;
-    if (isset($_POST['submit_category'])){
+    if (isset($_POST['submit_category'])) {
 
         $cat_title = $_POST['cat_title'];
 
-        if ($cat_title == "" || empty($cat_title)){
+        if ($cat_title == "" || empty($cat_title)) {
 
             echo "
             <div class='col-md-12'>
@@ -30,16 +33,14 @@ function insert_category(){
               </div>
             </div>
             ";
-        }
-        else{
-            $query  = "INSERT INTO categories(cat_title) ";
+        } else {
+            $query = "INSERT INTO categories(cat_title) ";
             $query .= "VALUES('{$cat_title}')";
             $create_category_query = mysqli_query($connection, $query);
-            if (!$create_category_query){
+            if (!$create_category_query) {
 
                 die("Query failed " . mysqli_error($connection));
-            }
-            else{
+            } else {
                 echo "
             <div class='col-md-12'>
               <div class='alert alert-success alert-dismissable fade in'>
@@ -53,12 +54,13 @@ function insert_category(){
     }
 }
 
-function findAllCategories(){
+function findAllCategories()
+{
 
     global $connection;
     $query = "SELECT * FROM categories";
     $select_categories = mysqli_query($connection, $query);
-    while ($row = mysqli_fetch_assoc($select_categories)){
+    while ($row = mysqli_fetch_assoc($select_categories)) {
 
         $cat_id = $row['cat_id'];
         $cat_title = ucfirst($row['cat_title']);
@@ -81,11 +83,12 @@ function findAllCategories(){
     }
 }
 
-function deleteCategories(){
+function deleteCategories()
+{
 
     global $connection;
 
-    if (isset($_GET['delete'])){
+    if (isset($_GET['delete'])) {
 
         $cat_id_delete = $_GET['delete'];
         $query = "DELETE FROM categories WHERE cat_id = {$cat_id_delete} ";
@@ -94,39 +97,55 @@ function deleteCategories(){
     }
 }
 
-//function login_user($username, $password){
-//
-//    global $connection;
-//
-//    $username = trim($username);
-//    $password = trim($password);
-//
-//    $username = mysqli_real_escape_string($connection, $username);
-//    $password = mysqli_real_escape_string($connection, $password);
-//
-//    $query = "SELECT * FROM users WHERE username = '{$username}'";
-//    $select_query = mysqli_query($connection, $query);
-//    confirmQuery($select_query);
-//
-//    while ($row = mysqli_fetch_assoc($select_query)){
-//
-//        $db_user_id = $row['user_id'];
-//        $db_username = $row['username'];
-//        $db_user_password = $row['user_password'];
-//        $db_user_firstname = $row['user_firstname'];
-//        $db_user_lastname = $row['user_lastname'];
-//        $db_user_role = $row['user_role'];
-//    }
-//
-//    if (password_verify($password, $db_user_password)){
-//
-//        $_SESSION['username'] = $db_username;
-//        $_SESSION['firstname'] = $db_user_firstname;
-//        $_SESSION['lastname'] = $db_user_lastname;
-//        $_SESSION['user_role'] = $db_user_role;
-//        redirect("/Kwiqpick_Blog/admin/");
-//    }
-//    else{
-//        redirect("/Kwiqpick_Blog/test.php");
-//    }
-//}
+function update_profile(){
+
+    global $connection;
+    if (isset($_POST['update_profile'])) {
+
+        $user_firstname = $_POST['first_name'];
+        $user_lastname = $_POST['last_name'];
+        $username = $_POST['username'];
+        $user_image = $_FILES['user_image']['name'];
+        $user_tmp_image = $_FILES['user_image']['tmp_name'];
+        $user_role = $_POST['role'];
+        $user_email = $_POST['user_email'];
+        $user_password = $_POST['user_password'];
+        //$user_password = password_hash($user_password, PASSWORD_BCRYPT);
+
+        move_uploaded_file($user_tmp_image, "../images/$user_image");
+
+        if (empty($user_image)) {
+            $query = "SELECT * FROM users WHERE username = '{$username}'";
+            $select_image = mysqli_query($connection, $query);
+            while ($row = mysqli_fetch_array($select_image)) {
+                $user_image = $row['user_image'];
+            }
+        }
+
+        $query = "UPDATE users SET ";
+        $query .= "user_firstname = '{$user_firstname}', ";
+        $query .= "user_lastname = '{$user_lastname}', ";
+        $query .= "username = '{$username}', ";
+        $query .= "user_image = '{$user_image}', ";
+        $query .= "user_role = '{$user_role}', ";
+        $query .= "user_email = '{$user_email}', ";
+        $query .= "user_password = '{$user_password}' ";
+        $query .= "WHERE username = '{$username}'";
+
+        $update_query = mysqli_query($connection, $query);
+        if (!$update_query) {
+
+            die("Query failed " . mysqli_error($connection));
+        } else {
+            echo "
+                        <div class='col-md-12 col-xs-12'>
+                            <div class='alert alert-success alert-dismissable fade in'>
+                                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;                 
+                                </a>
+                                <strong>{$username} has updated!</strong>
+                            </div>
+                        </div>
+                        ";
+        }
+    }
+}

@@ -4270,3 +4270,12 @@ td a{
 .marginLeft{
     margin-left: 8%;
 }
+
+a.morelink {
+    text-decoration:none;
+    outline: none;
+}
+.morecontent span {
+    display: none;
+
+}

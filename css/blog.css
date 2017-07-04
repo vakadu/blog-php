@@ -6,7 +6,7 @@
  *	Project:		Kwiqpick Blog-v1.0
  *	Version:		1.0
  *	First change:	28/06/2017
- *	Last change:	28/06/2017
+ *	Last change:	04/07/2017
  *	File Name: 		blog.css
  *	Author: 		Kwiqpick Developers
  *  Description:    This file is containing all the basic styling of the website
@@ -26,13 +26,8 @@
  *	( 05 ) - Pagination
  *	( 06 ) - Widgets
  *	( 07 ) - Comments
- *	( 08 ) -
- *	( 09 ) -
- *	( 10 ) -
- *	( 11 ) -
- *	( 12 ) - Footer
- *	( 13 ) - Back to Top
- *	( 14 ) - Responsive Specifications OR Media Queries
+ *	( 08 ) - Footer
+ *	( 09 ) - Back to Top
  *
  */
 
@@ -346,6 +341,10 @@ form textarea:-ms-input-placeholder {
  *	-------------------------------------------------------------------------------
  *
  */
+.articles{
+    margin-top: 40px;
+}
+
 article.article-item{
     margin-bottom: 20px;
     width: 100%;
@@ -797,6 +796,77 @@ article.article-item .article-footer .share-social-article a i {
  *	-------------------------------------------------------------------------------
  *
  */
+#comments{
+    margin: 10px 60px 60px 60px;
+}
+
+#comments .comments-wrapper ol.comment-list {
+    padding: 0;
+    list-style-type: none;
+    margin: 0 0 60px;
+}
+
+#comments .comments-wrapper ol.comment-list li {
+    overflow: hidden;
+    display: block;
+}
+
+#comments .comments-wrapper ol.comment-list li article {
+    overflow: hidden;
+    display: block;
+    width: 100%;
+}
+
+#comments .comments-wrapper ol.comment-list li article .comment-body {
+    margin-top: 20px;
+    /*margin-left: 90px;*/
+}
+
+#comments .comments-wrapper ol.comment-list li article .comment-body .meta-data {
+    overflow: hidden;
+    /*margin-bottom: 15px;*/
+}
+
+#comments .comments-wrapper ol.comment-list li article .comment-body .meta-data span{
+    display: inline-block;
+    margin: 0 10px;
+}
+
+#comments .comments-wrapper ol.comment-list li article .comment-body .meta-data .comment-author {
+    /*display: block;*/
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #444444;
+    line-height: 28px;
+    margin: 0;
+    padding: 0;
+}
+
+#comments .comments-wrapper ol.comment-list li article .comment-body .meta-data .comment-date {
+    font-size: 12px;
+    color: #444444;
+}
+
+#comments .comments-wrapper ol.comment-list li article .comment-body .comment-content {
+    margin: 0;
+    padding: 0;
+}
+
+#comments .comments-wrapper ol.comment-list li article .comment-body .comment-content p {
+    color: #444444;
+    font-size: 14px;
+    line-height: 28px;
+    margin: 10px 0 20px 0;
+}
+
+#comments .comments-wrapper ol.comment-list li ul,
+#comments .comments-wrapper ol.comment-list li ol {
+    padding-left: 90px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .input-name span{
     font-size: 15px;
     color: #C90000;
@@ -833,7 +903,7 @@ article.article-item .article-body.article-comments .comment-form .comment-submi
 
 /**
  *	-------------------------------------------------------------------------------
- *	 ( 01 ) - Footer
+ *	 ( 08 ) - Footer
  *	-------------------------------------------------------------------------------
  *
  */
@@ -855,7 +925,7 @@ footer a:hover {
 
 /**
  *	-------------------------------------------------------------------------------
- *	 ( 01 ) - Back to Top
+ *	 ( 09 ) - Back to Top
  *	-------------------------------------------------------------------------------
  *
  */
