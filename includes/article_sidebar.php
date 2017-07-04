@@ -15,25 +15,25 @@
             </form>
         </div>
     </div>
-    <div class="blog-widget">
-        <div class="well">
-            <h3>Login</h3>
-            <form action="includes/login.php" method="post">
-                <div class="form-group">
-                    <input type="text" name="username" class="form-control"
-                           placeholder="Username">
-                </div>
-                <div class="input-group">
-                    <input type="password" name="password" class="form-control"
-                           placeholder="Password">
-                    <span class="input-group-btn">
-                    <button class="btn btn-primary" name="login" type="submit" >Login
-                    </button>
-                </span>
-                </div>
-            </form> <!-- search form end -->
-        </div>
-    </div>
+<!--    <div class="blog-widget">-->
+<!--        <div class="well">-->
+<!--            <h3>Login</h3>-->
+<!--            <form action="includes/login.php" method="post">-->
+<!--                <div class="form-group">-->
+<!--                    <input type="text" name="username" class="form-control"-->
+<!--                           placeholder="Username">-->
+<!--                </div>-->
+<!--                <div class="input-group">-->
+<!--                    <input type="password" name="password" class="form-control"-->
+<!--                           placeholder="Password">-->
+<!--                    <span class="input-group-btn">-->
+<!--                    <button class="btn btn-primary" name="login" type="submit" >Login-->
+<!--                    </button>-->
+<!--                </span>-->
+<!--                </div>-->
+<!--            </form> <!-- search form end -->
+<!--        </div>-->
+<!--    </div>-->
     <div class="blog-widget color-widget">
         <h3>Get the Kwiqpick app</h3>
         <p>In July 2017</p>

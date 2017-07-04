@@ -108,7 +108,7 @@ if (isset($_POST['create_post'])){
 
     <div class="ln_solid"></div>
     <div class="form-group">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-6 col-md-offset-1">
             <button class="btn btn-primary" type="reset">Reset</button>
             <button id="post-submit" name="create_post" type="submit" class="btn
             btn-success">Submit</button>

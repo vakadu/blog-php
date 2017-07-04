@@ -1,7 +1,7 @@
 <?php
 //make database and function files global to all
 include "database.php";
-include "admin/functions.php";
+include "../admin/functions.php";
 ?>
 
 <!DOCTYPE html>
@@ -22,34 +22,18 @@ include "admin/functions.php";
     <meta name="keywords" lang="en" content="Kwiqpick, blog, landing blog page,
     mobile-landing page, responsive, responsive blog page,
     fully responsive">
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
     <!--Custom Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,400i,700" rel="stylesheet">
     <!--Font Awesome-->
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
     <!--Bootstrap-->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/animate.min.css">
     <!--Kwiqpick blog css-->
-    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
 
-<header id="header">
-    <div class="nav-container">
-        <div class="container">
-            <div class="row">
-                <nav class="main-navigation">
-                    <div class="col-md-3">
-                        <div class="kwiqpick-logo">
-                            <a href="index.php">
-                                <img src="images/Kwiqpick_Logo_512x512.jpg" alt="Kwiqpick">
-                            </a>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-    </div>
-</header>
+<section class="main-content">

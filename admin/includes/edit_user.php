@@ -29,7 +29,7 @@ if (isset($_POST['update_user'])){
     $user_role = $_POST['role'];
     $user_email = $_POST['user_email'];
     $user_password = $_POST['user_password'];
-    //$user_password = password_hash($user_password, PASSWORD_BCRYPT);
+    $user_password = password_hash($user_password, PASSWORD_BCRYPT);
 
     move_uploaded_file($user_tmp_image, "../images/$user_image");
 
@@ -134,7 +134,7 @@ if (isset($_POST['update_user'])){
 
     <div class="ln_solid"></div>
     <div class="form-group">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-6 col-md-offset-1">
             <button id="user-submit" name="update_user" type="submit" class="btn
             btn-success">Submit</button>
         </div>

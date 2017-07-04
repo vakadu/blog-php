@@ -1,7 +1,6 @@
 <?php
 
-function confirmQuery($result)
-{
+function confirmQuery($result){
 
     global $connection;
     if (!$result) {
@@ -9,14 +8,89 @@ function confirmQuery($result)
     }
 }
 
-function redirect($location)
-{
+function redirect($location){
 
     header("Location: " . $location);
 }
 
-function insert_category()
-{
+function set_message($message){
+
+    if(!empty($message)){
+
+        $_SESSION['message'] = $message;
+    }
+    else{
+        $message = "";
+    }
+}
+function display_message(){
+
+    if(isset($_SESSION['message'])){
+
+        echo $_SESSION['message'];
+        unset($_SESSION['message']);
+    }
+}
+
+function validation_errors($error_message){
+    $alert_error_message = "
+    <div class='alert alert-danger alert-dismissible' role='alert'>
+    <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+    <strong>Warning!</strong>
+    {$error_message}
+    </div>
+    ";
+    return $alert_error_message;
+}
+
+function login_user(){
+
+    global $connection;
+    if (isset($_POST['login_submit'])){
+
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $username = mysqli_real_escape_string($connection, $username);
+        $password = mysqli_real_escape_string($connection, $password);
+
+        $query = "SELECT * FROM users WHERE username = '{$username}'";
+        $select_query = mysqli_query($connection, $query);
+        if (!$select_query){
+            die("Failed " . mysqli_error($connection));
+        }
+        while ($row = mysqli_fetch_assoc($select_query)){
+
+            $db_id = $row['user_id'];
+            $db_username = $row['username'];
+            $db_password = $row['user_password'];
+            $db_user_firstname = $row['user_firstname'];
+            $db_user_lastname = $row['user_lastname'];
+            $db_role = $row['user_role'];
+        }
+
+        if ($username !== $db_username && $password !== $db_password){
+
+            redirect("../index.php");
+        }
+        elseif (password_verify($password, $db_password)){
+
+            $_SESSION['username'] = $db_username;
+            $_SESSION['firstname'] = $db_user_firstname;
+            $_SESSION['lastname'] = $db_user_lastname;
+            $_SESSION['user_role'] = $db_role;
+            redirect("../admin");
+        }
+        else{
+
+            redirect("../index.php");
+        }
+
+//    login_user($_POST['username'], $_POST['password']);
+    }
+}
+
+function insert_category(){
 
     global $connection;
     if (isset($_POST['submit_category'])) {
@@ -54,8 +128,7 @@ function insert_category()
     }
 }
 
-function findAllCategories()
-{
+function findAllCategories(){
 
     global $connection;
     $query = "SELECT * FROM categories";
@@ -83,8 +156,7 @@ function findAllCategories()
     }
 }
 
-function deleteCategories()
-{
+function deleteCategories(){
 
     global $connection;
 
@@ -149,3 +221,14 @@ function update_profile(){
         }
     }
 }
+
+function recordCount($table){
+
+    global $connection;
+    $query = "SELECT * FROM " . $table;
+    $select_query = mysqli_query($connection, $query);
+    $count_rows = mysqli_num_rows($select_query);
+    confirmQuery($count_rows);
+    return $count_rows;
+}
+

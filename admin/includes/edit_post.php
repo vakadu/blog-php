@@ -153,7 +153,7 @@ if (isset($_POST['update_post'])){
 
     <div class="ln_solid"></div>
     <div class="form-group">
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-6 col-md-offset-1">
             <button id="post-submit" name="update_post" type="submit" class="btn
             btn-success">Submit</button>
         </div>

@@ -6,7 +6,7 @@ include "functions.php";
 
 <?php
 if (!isset($_SESSION['user_role'])){
-    header("Location: ../home.php");
+    header("Location: ../index.php");
 }
 ?>
 
