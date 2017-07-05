@@ -43,6 +43,104 @@ function validation_errors($error_message){
     return $alert_error_message;
 }
 
+//Add post
+function add_post(){
+
+    global $connection;
+    if (isset($_POST['create_post'])){
+
+        $post_title = $_POST['title'];
+        $post_category_id = $_POST['category'];
+        $post_author = $_POST['author'];
+        $post_status = $_POST['status'];
+        $post_image = $_FILES['image']['name'];
+        $post_tmp_image = $_FILES['image']['tmp_name'];
+        $post_date = date('d-m-y');
+        $post_tags = $_POST['tags'];
+        $post_content = $_POST['content'];
+        $post_content = str_replace("'", "''", $post_content);
+        $post_comment_count = 0;
+
+        move_uploaded_file($post_tmp_image, "../images/$post_image");
+
+        $query  = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) ";
+        $query .= "VALUES({$post_category_id}, '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_content}', '{$post_tags}', '{$post_comment_count}', '{$post_status}')";
+
+        $insert_query = mysqli_query($connection, $query);
+        if (!$insert_query){
+
+            die("Query failed " . mysqli_error($connection));
+        }
+        else{
+            echo "
+            <div class='col-md-12 col-xs-12'>
+              <div class='alert alert-success alert-dismissable fade in'>
+                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;                 </a>
+                <strong>{$post_title} post created!</strong>
+              </div>
+            </div>
+            ";
+        }
+    }
+}
+
+function add_post_category(){
+
+    global $connection;
+    $query = "SELECT * FROM categories";
+    $category_query = mysqli_query($connection, $query);
+    if (!$category_query){
+
+        die("Query failed " . mysqli_error($connection));
+    }
+    while ($row = mysqli_fetch_assoc($category_query)){
+
+        $cat_id = $row['cat_id'];
+        $cat_title = $row['cat_title'];
+        echo "<option value='{$cat_id}'>{$cat_title}</option>";
+    }
+}
+
+//Add User
+function add_user(){
+
+    global $connection;
+    if (isset($_POST['create_user'])){
+
+        $user_firstname = $_POST['first_name'];
+        $user_lastname = $_POST['last_name'];
+        $username = $_POST['username'];
+        $user_image = $_FILES['user_image']['name'];
+        $user_tmp_image = $_FILES['user_image']['tmp_name'];
+        $user_role = $_POST['role'];
+        $user_email = $_POST['user_email'];
+        $user_password = $_POST['user_password'];
+        $user_password = password_hash($user_password, PASSWORD_BCRYPT);
+
+        move_uploaded_file($user_tmp_image, "../images/$user_image");
+
+        $query  = "INSERT INTO users(username, user_firstname, user_lastname, user_image, user_role, user_email, user_password) ";
+        $query .= "VALUES('{$username}', '{$user_firstname}', '{$user_lastname}', '{$user_image}', '{$user_role}', '{$user_email}', '{$user_password}')";
+
+        $insert_query = mysqli_query($connection, $query);
+        if (!$insert_query){
+
+            die("Query failed " . mysqli_error($connection));
+        }
+        else{
+            echo "
+            <div class='col-md-12 col-xs-12'>
+              <div class='alert alert-success alert-dismissable fade in'>
+                <a href='#' class='close' data-dismiss='alert'
+                aria-label='close'>&times;                 </a>
+                <strong>User with {$username} is created!</strong>
+              </div>
+            </div>
+            ";
+        }
+    }
+}
+
 function login_user(){
 
     global $connection;
@@ -231,4 +329,3 @@ function recordCount($table){
     confirmQuery($count_rows);
     return $count_rows;
 }
-

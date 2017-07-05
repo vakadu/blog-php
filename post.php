@@ -16,6 +16,8 @@ if (isset($_GET['p_id'])){
         $post_image = $row['post_image'];
         $post_tags = $row['post_tags'];
         $post_content = $row['post_content'];
+
+        $post_tags = explode(', ', $row['post_tags']);
     }
 }
 
@@ -48,10 +50,18 @@ if (isset($_GET['p_id'])){
                         </div>
                         <div class="article-footer">
                             <div class="row">
-                                <div class="col-md-5 blog-tags">
-                                    <a href="javascript:;"><?php echo $post_tags; ?> </a>
+                                <div class="col-md-12 blog-tags pull-right">
+
+                                    <?php
+
+                                    foreach ($post_tags as $post_tag) {
+                                        echo '<a href="#">'.$post_tag.'</a>';
+                                    }
+                                    ?>
                                 </div>
-                                <div class="col-md-7">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 pull-right">
                                     <div class="share-social-article">
                                         <a href="http://www.facebook.com/sharer.php?u=http://www.kwiqpick.com/business" target="_blank"><i class="fa fa-facebook"></i></a>
                                         <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://www.kwiqpick.com" target="_blank"><i class="fa fa-linkedin"></i></a>
@@ -61,52 +71,6 @@ if (isset($_GET['p_id'])){
                         </div>
                     </div>
                 </article>
-
-                    <article class="article-item">
-                        <div class="enter-media">
-                            <div class="article-heading hasMargin">
-                                <h2>
-                                    Comments
-                                </h2>
-                            </div>
-                            <div id="comments" class="comments-area">
-                                <div class="comments-wrapper">
-                                    <ol class="comment-list">
-                                        <li class="comment">
-                                            <?php
-
-                                            $query  = "SELECT * FROM comments WHERE comment_post_id = {$the_post_id} ";
-                                            $query .= "AND comment_status = 'Approved' ";
-                                            $query .= "ORDER BY comment_id DESC";
-                                            $select_comment_query = mysqli_query($connection, $query);
-                                            confirmQuery($select_comment_query);
-                                            while ($row = mysqli_fetch_assoc($select_comment_query)) {
-
-                                            $comment_author = $row['comment_author'];
-                                            $comment_date = $row['comment_date'];
-                                            $comment_content = $row['comment_content'];
-
-                                            ?>
-                                            <article>
-                                                <div class="comment-body">
-                                                    <div class="meta-data">
-                                                    <span class="comment-author"><?php echo $comment_author; ?></span>
-                                                        <span class="comment-date"> <?php echo $comment_date; ?></span>
-                                                    </div>
-                                                    <div class="comment-content">
-                                                        <p><?php echo $comment_content; ?></p>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                                <?php
-                                            }
-                                            ?>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
 
                 <?php
 
@@ -146,7 +110,7 @@ if (isset($_GET['p_id'])){
                                     <input type="text" name="name" placeholder="">
                                     <p class="input-name"> E-MAIL <span>*</span> </p>
                                     <input type="text" name="email" placeholder="">
-                                    <p class="input-name"> COMMENT</p>
+                                    <p class="input-name"> COMMENT <span>*</span> </p>
                                     <textarea placeholder="" name="content"></textarea>
                                 </div>
                                 <div class="comment-submit">
@@ -158,6 +122,53 @@ if (isset($_GET['p_id'])){
                         </div>
                     </div>
                 </article>
+
+                <article class="article-item">
+                    <div class="enter-media">
+                        <div class="article-heading hasMargin">
+                            <h2>
+                                Comments
+                            </h2>
+                        </div>
+                        <div id="comments" class="comments-area">
+                            <div class="comments-wrapper">
+                                <ol class="comment-list">
+                                    <li class="comment">
+                                        <?php
+
+                                        $query  = "SELECT * FROM comments WHERE comment_post_id = {$the_post_id} ";
+                                        $query .= "AND comment_status = 'Approved' ";
+                                        $query .= "ORDER BY comment_id DESC";
+                                        $select_comment_query = mysqli_query($connection, $query);
+                                        confirmQuery($select_comment_query);
+                                        while ($row = mysqli_fetch_assoc($select_comment_query)) {
+
+                                            $comment_author = $row['comment_author'];
+                                            $comment_date = $row['comment_date'];
+                                            $comment_content = $row['comment_content'];
+
+                                            ?>
+                                            <article>
+                                                <div class="comment-body">
+                                                    <div class="meta-data">
+                                                        <span class="comment-author"><?php echo $comment_author; ?></span>
+                                                        <span class="comment-date"> <?php echo $comment_date; ?></span>
+                                                    </div>
+                                                    <div class="comment-content">
+                                                        <p><?php echo $comment_content; ?></p>
+                                                    </div>
+                                                </div>
+                                            </article>
+                                            <?php
+                                        }
+                                        ?>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
             </div>
             <?php include "includes/article_sidebar.php"; ?>
         </div>

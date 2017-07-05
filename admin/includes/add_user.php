@@ -1,41 +1,4 @@
-<?php
-
-if (isset($_POST['create_user'])){
-
-    $user_firstname = $_POST['first_name'];
-    $user_lastname = $_POST['last_name'];
-    $username = $_POST['username'];
-    $user_image = $_FILES['user_image']['name'];
-    $user_tmp_image = $_FILES['user_image']['tmp_name'];
-    $user_role = $_POST['role'];
-    $user_email = $_POST['user_email'];
-    $user_password = $_POST['user_password'];
-    $user_password = password_hash($user_password, PASSWORD_BCRYPT);
-
-    move_uploaded_file($user_tmp_image, "../images/$user_image");
-
-    $query  = "INSERT INTO users(username, user_firstname, user_lastname, user_image, user_role, user_email, user_password) ";
-    $query .= "VALUES('{$username}', '{$user_firstname}', '{$user_lastname}', '{$user_image}', '{$user_role}', '{$user_email}', '{$user_password}')";
-
-    $insert_query = mysqli_query($connection, $query);
-    if (!$insert_query){
-
-        die("Query failed " . mysqli_error($connection));
-    }
-    else{
-        echo "
-            <div class='col-md-12 col-xs-12'>
-              <div class='alert alert-success alert-dismissable fade in'>
-                <a href='#' class='close' data-dismiss='alert'
-                aria-label='close'>&times;                 </a>
-                <strong>User with {$username} is created!</strong>
-              </div>
-            </div>
-            ";
-    }
-}
-
-?>
+<?php add_user(); ?>
 
 <form class="form-horizontal form-label-left" action="" method="post"
       enctype="multipart/form-data">

@@ -44,7 +44,7 @@ include "admin/functions.php";
                     <div class="col-md-3">
                         <div class="kwiqpick-logo">
                             <a href="index.php">
-                                <img src="images/Kwiqpick_Logo_512x512.jpg" alt="Kwiqpick">
+                                <img src="images/Kwiqpick_Logo.png" alt="Kwiqpick">
                             </a>
                         </div>
                     </div>

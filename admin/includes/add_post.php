@@ -1,42 +1,4 @@
-<?php
-
-if (isset($_POST['create_post'])){
-
-    $post_title = $_POST['title'];
-    $post_category_id = $_POST['category'];
-    $post_author = $_POST['author'];
-    $post_status = $_POST['status'];
-    $post_image = $_FILES['image']['name'];
-    $post_tmp_image = $_FILES['image']['tmp_name'];
-    $post_date = date('d-m-y');
-    $post_tags = $_POST['tags'];
-    $post_content = $_POST['content'];
-    $post_content = str_replace("'", "''", $post_content);
-    $post_comment_count = 0;
-
-    move_uploaded_file($post_tmp_image, "../images/$post_image");
-
-    $query  = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) ";
-    $query .= "VALUES({$post_category_id}, '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_content}', '{$post_tags}', '{$post_comment_count}', '{$post_status}')";
-
-    $insert_query = mysqli_query($connection, $query);
-    if (!$insert_query){
-
-        die("Query failed " . mysqli_error($connection));
-    }
-    else{
-        echo "
-            <div class='col-md-12 col-xs-12'>
-              <div class='alert alert-success alert-dismissable fade in'>
-                <a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;                 </a>
-                <strong>{$post_title} post created!</strong>
-              </div>
-            </div>
-            ";
-    }
-}
-
-?>
+<?php add_post(); ?>
 
 <form class="form-horizontal form-label-left" action="" method="post"
       enctype="multipart/form-data">
@@ -51,20 +13,9 @@ if (isset($_POST['create_post'])){
         <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <select class="form-control" name="category">
                 <option value="">Choose Category</option>
-                <?php
-                $query = "SELECT * FROM categories";
-                $category_query = mysqli_query($connection, $query);
-                if (!$category_query){
 
-                    die("Query failed " . mysqli_error($connection));
-                }
-                while ($row = mysqli_fetch_assoc($category_query)){
+                <?php add_post_category(); ?>
 
-                    $cat_id = $row['cat_id'];
-                    $cat_title = $row['cat_title'];
-                    echo "<option value='{$cat_id}'>{$cat_title}</option>";
-                }
-                ?>
             </select>
         </div>
     </div>

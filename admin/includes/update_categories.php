@@ -41,8 +41,6 @@
     </div>
     <div class="form-group">
         <div class="col-md-6 col-md-offset-3">
-            <button class="btn btn-primary"
-                    type="reset">Reset</button>
             <button id="submit" name="update_category"
                     type="submit" class="btn btn-success">Update Category
             </button>

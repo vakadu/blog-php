@@ -1,5 +1,11 @@
 <?php include "includes/header.php"; ?>
 
+<?php
+
+
+
+?>
+
 <section class="articles">
     <div class="container">
         <div class="row">
@@ -68,10 +74,8 @@
                                 </div>
                                 <div class="col-md-7 col-sm-12 col-xs-12">
                                     <div class="share-social-article">
-                                        <a href="javascript:;"><i class="fa
-                                        fa-facebook"></i></a>
-                                        <a href="javascript:;"><i class="fa
-                                        fa-linkedin"></i></a>
+                                        <a href="http://www.facebook.com/sharer.php?u=http://localhost/Kwiqpick_Blog/post.php?p_id=<?php echo $post_id; ?>" target="_blank"><i class="fa fa-facebook"></i></a>
+                                        <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://localhost/Kwiqpick_Blog/post.php?p_id=<?php echo $post_id; ?>" target="_blank"><i class="fa fa-linkedin"></i></a>
                                     </div>
                                 </div>
                             </div>

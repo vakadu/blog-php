@@ -30,8 +30,7 @@
                         </div>
                         <div class="x_content">
 
-                            <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive
-nowrap" cellspacing="0" width="100%">
+                            <table id="datatable-responsive" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
@@ -41,9 +40,7 @@ nowrap" cellspacing="0" width="100%">
                                     <th>Email</th>
                                     <th>Status</th>
                                     <th>Date</th>
-                                    <th>Approve</th>
-                                    <th>Unapprove</th>
-                                    <th>Delete</th>
+                                    <th>Take Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -77,17 +74,17 @@ nowrap" cellspacing="0" width="100%">
                                         echo "<td><a href='../post.php?p_id={$post_id}'> {$post_title}</a></td>";
                                     }
 
-                                    echo "<td>{$comment_content}</td>";
+                                    echo "<td class='more col-sm-2'>{$comment_content}</td>";
                                     echo "<td>{$comment_email}</td>";
                                     echo "<td>{$comment_status}</td>";
                                     echo "<td>{$comment_date}</td>";
-                                    echo "<td><a href='post_comment.php?approve={$comment_id}&id=". $_GET['id'] ."' class='btn btn-success btn-xs'><i class='fa fa-folder'></i> Approve</a></td>";
-                                    echo "<td><a href='post_comment.php?unapprove={$comment_id}&id=". $_GET['id'] ."' class='btn btn-success btn-xs'><i class='fa fa-folder'></i>Unapprove</a></td>";
                                     echo "<td>
-                <a onclick=\"javascript:; return confirm('Are you sure you want to delete')\" href='post_comment.php?delete={$comment_id}&id=". $_GET['id'] ."' class='btn btn-danger btn-xs'><i
-                 class='fa fa-trash-o'></i> Delete
-                </a>
-               </td>";
+                                    <a href='post_comment.php?approve={$comment_id}&id=". $_GET['id'] ."' class='btn btn-success'><i class='fa fa-check'></i> </a>
+                                    <br>
+                                    <a href='post_comment.php?unapprove={$comment_id}&id=". $_GET['id'] ."' class='btn btn-success'><i class='fa fa-times'></i></a>
+                                    <br>
+                                    <a onclick=\"javascript:; return confirm('Are you sure you want to delete')\" href='post_comment.php?delete={$comment_id}&id=". $_GET['id'] ."' class='btn btn-danger'><i class='fa fa-trash-o'></i></a>
+                                    </td>";
                                     echo "</tr>";
                                 }
 
@@ -129,3 +126,7 @@ if (isset($_GET['delete'])) {
     $delete_query = mysqli_query($connection, $query);
     redirect("post_comment.php?id=". $_GET['id']. "");
 }
+
+?>
+
+<?php include "includes/footer.php"; ?>
