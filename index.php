@@ -30,7 +30,7 @@
                 $select_all_posts = mysqli_query($connection, $query);
                 while ($row = mysqli_fetch_assoc($select_all_posts)) {
                     $post_id = $row['post_id'];
-
+                    $post_category_id = $row['post_category_id'];
                     $post_title = $row['post_title'];
                     $post_author = $row['post_author'];
                     $post_date = $row['post_date'];
