@@ -1,11 +1,5 @@
 <?php include "includes/header.php"; ?>
 
-<?php
-
-
-
-?>
-
 <section class="articles">
     <div class="container">
         <div class="row">
@@ -32,10 +26,11 @@
                 $count = ceil($count / $per_page);//for making number integer
 
 
-                $query = "SELECT * FROM posts WHERE post_status = 'publish' ORDER BY post_id DESC LIMIT $page_1, $per_page";
+                $query = "SELECT * FROM posts WHERE post_status = 'publish' ORDER BY post_date DESC LIMIT $page_1, $per_page";
                 $select_all_posts = mysqli_query($connection, $query);
                 while ($row = mysqli_fetch_assoc($select_all_posts)) {
                     $post_id = $row['post_id'];
+
                     $post_title = $row['post_title'];
                     $post_author = $row['post_author'];
                     $post_date = $row['post_date'];
@@ -57,6 +52,18 @@
                                     <li><a href="authors_post.php?author=<?php echo
                                         $post_author?>&p_id=<?php echo $post_id; ?>" target="_blank"><i class="fa fa-user">&nbsp;</i> <?php echo $post_author; ?></a>
                                     </li>
+                                    <?php
+                                    $query = "SELECT * FROM categories WHERE cat_id = {$post_category_id}";
+                                    $select_cat_query = mysqli_query($connection, $query);
+                                    confirmQuery($select_cat_query);
+                                    while ($row = mysqli_fetch_assoc($select_cat_query)){
+
+                                        $cat_id = $row['cat_id'];
+                                        $cat_title = $row['cat_title'];
+
+                                        echo "<li><a href='category.php?category=$cat_id&title=$cat_title'><i class='fa fa-folder-open-o'>&nbsp;</i> {$cat_title}</a> </li>";
+                                    }
+                                    ?>
                                 </ul>
                             </div>
                         </div>

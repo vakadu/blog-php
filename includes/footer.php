@@ -22,6 +22,7 @@
 
 <script src="js/jquery-3.2.1.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js"></script>
 <script src="js/SmoothScroll.js"></script>
 <script src="js/blog.js"></script>
 </body>

@@ -11,6 +11,7 @@ if (isset($_GET['p_id'])){
     while ($row = mysqli_fetch_assoc($select_query)){
 
         $post_title = $row['post_title'];
+        $post_category_id = $row['post_category_id'];
         $post_author = $row['post_author'];
         $post_date = $row['post_date'];
         $post_image = $row['post_image'];
@@ -37,8 +38,21 @@ if (isset($_GET['p_id'])){
                                 <ul>
                                     <li><a href="javascript:void(0)"> <i class="fa
                                     fa-calendar">&nbsp;&nbsp;<?php echo $post_date; ?></i></a> </li>
-                                    <li><a href="javascript:void(0)"><i class="fa
-                                    fa-user">&nbsp;</i> <?php echo $post_author; ?></a> </li>
+                                    <li><a href="authors_post.php?author=<?php echo
+                                        $post_author?>&p_id=<?php echo $post_id; ?>" target="_blank"><i class="fa fa-user">&nbsp;</i> <?php echo $post_author; ?></a>
+                                    </li>
+                                    <?php
+                                    $query = "SELECT * FROM categories WHERE cat_id = {$post_category_id}";
+                                    $select_cat_query = mysqli_query($connection, $query);
+                                    confirmQuery($select_cat_query);
+                                    while ($row = mysqli_fetch_assoc($select_cat_query)){
+
+                                        $cat_id = $row['cat_id'];
+                                        $cat_title = $row['cat_title'];
+
+                                        echo "<li><a href='category.php?category=$cat_id&title=$cat_title'><i class='fa fa-folder-open-o'>&nbsp;</i> {$cat_title}</a> </li>";
+                                    }
+                                    ?>
                                 </ul>
                             </div>
                         </div>
@@ -63,7 +77,7 @@ if (isset($_GET['p_id'])){
                             <div class="row">
                                 <div class="col-md-12 pull-right">
                                     <div class="share-social-article">
-                                        <a href="http://www.facebook.com/sharer.php?u=http://www.kwiqpick.com/business" target="_blank"><i class="fa fa-facebook"></i></a>
+                                        <a href="javascript:fbshareCurrentPage();" target="_blank"><i class="fa fa-facebook"></i></a>
                                         <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=http://www.kwiqpick.com" target="_blank"><i class="fa fa-linkedin"></i></a>
                                     </div>
                                 </div>
@@ -80,12 +94,13 @@ if (isset($_GET['p_id'])){
                     $comment_author = $_POST['name'];
                     $comment_email = $_POST['email'];
                     $comment_content = $_POST['content'];
+                    $comment_date = date("d-m-Y h:i:s A l");
 
                     if (!empty($comment_author) && !empty($comment_email) && !empty
                         ($comment_content)){
 
                         $query  = "INSERT INTO comments(comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date) ";
-                        $query .= "VALUES({$the_post_id}, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'Unapproved', now())";
+                        $query .= "VALUES({$the_post_id}, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'Unapproved', '{$comment_date}')";
                         $insert_query = mysqli_query($connection, $query);
                         confirmQuery($insert_query);
                     }
@@ -104,14 +119,16 @@ if (isset($_GET['p_id'])){
                             </h2>
                         </div>
                         <div class="article-body article-comments">
-                            <form method="post">
+                            <form method="post" id="comment-form">
                                 <div class="comment-form ">
                                     <p class="input-name"> NAME <span>*</span> </p>
-                                    <input type="text" name="name" placeholder="">
+                                    <input type="text" name="name" placeholder="" required>
                                     <p class="input-name"> E-MAIL <span>*</span> </p>
-                                    <input type="text" name="email" placeholder="">
+                                    <input type="email" name="email" placeholder=""
+                                           required>
                                     <p class="input-name"> COMMENT <span>*</span> </p>
-                                    <textarea placeholder="" name="content"></textarea>
+                                    <textarea placeholder="" name="content"
+                                              required></textarea>
                                 </div>
                                 <div class="comment-submit">
                                     <button href="javascript:;" class="custom-buttons
@@ -126,9 +143,7 @@ if (isset($_GET['p_id'])){
                 <article class="article-item">
                     <div class="enter-media">
                         <div class="article-heading hasMargin">
-                            <h2>
-                                Comments
-                            </h2>
+                            <h3>Comments</h3>
                         </div>
                         <div id="comments" class="comments-area">
                             <div class="comments-wrapper">
@@ -174,5 +189,12 @@ if (isset($_GET['p_id'])){
         </div>
     </div>
 </section>
+
+<script language="javascript">
+    function fbshareCurrentPage()
+    {window.open("https://www.facebook.com/sharer/sharer.php?u="+escape(window.location.href)+"&t="+document.title, '',
+        'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+        return false; }
+</script>
 
 <?php include "includes/footer.php"; ?>

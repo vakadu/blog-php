@@ -22,11 +22,20 @@
         $subscribe_email = trim($_POST['subscribe_email']);
         if (!empty($subscribe_email)){
 
-            $query  = "INSERT INTO subscribers(subscriber_email, susbcriber_time) ";
-            $query .= "VALUES('{$subscribe_email}', now())";
-            $insert_query = mysqli_query($connection, $query);
-            confirmQuery($insert_query);
-            echo "<script>alert('Successfully added')</script>";
+            $select_query = "SELECT subscriber_id FROM subscribers WHERE subscriber_email = '{$subscribe_email}'";
+            $select_query_db = mysqli_query($connection, $select_query);
+            if (mysqli_num_rows($select_query_db) >= 1){
+
+                echo "<script>alert('You have already subscribed')</script>";
+            }
+            else{
+                $subscriber_time  = date("d-m-Y h:i:s A l");
+                $query  = "INSERT INTO subscribers(subscriber_email, subscriber_time) ";
+                $query .= "VALUES('{$subscribe_email}', '{$subscriber_time}')";
+                $insert_query = mysqli_query($connection, $query);
+                confirmQuery($insert_query);
+                echo "<script>alert('Successfully added')</script>";
+            }
         }
         else{
             echo "<script>alert('Subscriber field cannot be empty')</script>";
@@ -45,7 +54,7 @@
             And i will not spam promise.</p>
         <div class="widget-forms">
             <form class="subscribe-form" method="post">
-                <input type="email" name="subscribe_email" placeholder="e-mail">
+                <input type="email" name="subscribe_email" placeholder="e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
                 <button type="submit" class="sidebar-button button-color" name="subscribe">Subscribe</button>
             </form>
         </div>

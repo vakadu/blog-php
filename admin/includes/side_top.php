@@ -1,8 +1,7 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="index.php" class="site_title"><img src="../images/Kwiqpick_Logo_512x512.jpg" height="40px">
-                <span>Kwiqpick Blog</span></a>
+            <a href="index.php" class="site_title"><img src="../images/KWIQPICK_Logo_1150x250.png" height="40px"></a>
         </div>
 
         <div class="clearfix"></div>

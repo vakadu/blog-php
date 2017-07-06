@@ -1,4 +1,4 @@
-<?php include "delete_post.php";
+<?php
 
 if (isset($_POST['checkBoxArray'])){
 
@@ -118,15 +118,15 @@ if (isset($_POST['checkBoxArray'])){
 
             echo "<td>{$post_date}</td>";
             echo "<td>
-                <a href='../post.php?p_id={$post_id}' class='btn btn-success'><i class='fa fa-folder'></i>
-                </a>
-                <br>
-                <a href='posts.php?source=edit_post&p_id={$post_id}' class='btn btn-info '><i class='fa fa-pencil'></i> 
-                </a>
-                <br>
-                <a onclick=\"javascript:; return confirm('Are you sure you want to delete')\" href='posts.php?delete={$post_id}' class='btn btn-danger'><i
+                    <ul class='take-action'>
+                    <li><a href='../post.php?p_id={$post_id}' class='btn btn-success'><i class='fa fa-folder'></i>
+                </a></li>
+                    <li><a href='posts.php?source=edit_post&p_id={$post_id}' class='btn btn-info '><i class='fa fa-pencil'></i> 
+                </a></li>
+                    <li><a onclick=\"javascript:; return confirm('Are you sure you want to delete')\" href='posts.php?delete={$post_id}' class='btn btn-danger'><i
                  class='fa fa-trash-o'></i> 
-                </a>
+                </a></li>
+                    </ul>
               </td>";
             echo "</tr>";
         }

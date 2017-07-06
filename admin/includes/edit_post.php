@@ -30,6 +30,7 @@ if (isset($_POST['update_post'])){
     $post_image = $_FILES['image']['name'];
     $post_tmp_image = $_FILES['image']['tmp_name'];
     $post_tags = $_POST['tags'];
+    $post_date  = date("d-m-Y h:i:s A l");
     $post_content = $_POST['content'];
     $post_content = str_replace("'", "''", $post_content);
 
@@ -46,7 +47,7 @@ if (isset($_POST['update_post'])){
     $query  = "UPDATE posts SET ";
     $query .= "post_title = '{$post_title}', ";
     $query .= "post_category_id ='{$post_category_id}', ";
-    $query .= "post_date = now(),  ";
+    $query .= "post_date = '{$post_date}', ";
     $query .= "post_author = '{$post_author}', ";
     $query .= "post_status = '{$post_status}', ";
     $query .= "post_tags = '{$post_tags}', ";

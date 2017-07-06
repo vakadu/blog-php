@@ -89,6 +89,10 @@
                                     echo "<div class='count'>{$category_count}</div>";
                                     ?>
                                     <h3>Categories</h3>
+                                    <span class='count_bottom'><i class='green'>&nbsp;&nbsp;<?php echo $category_count ?></i>&nbsp; Number of Categories</span>
+                                    <br>
+                                    <br>
+                                    <br>
                                 </div>
                             </div>
                             <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">

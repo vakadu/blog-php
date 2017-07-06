@@ -104,12 +104,15 @@ if (isset($_POST['checkBoxArray'])){
             echo "<td>{$comment_email}</td>";
             echo "<td>{$comment_status}</td>";
             echo "<td>{$comment_date}</td>";
-            echo "<td><a href='comments.php?approve={$comment_id}' class='btn btn-success'><i class='fa fa-check'></i></a><br>
-<a href='comments.php?unapprove={$comment_id}' class='btn btn-warning'><i class='fa fa-times'></i></a><br>
-<a onclick=\"javascript:; return confirm('Are you sure you want to delete')\" href='comments.php?delete={$comment_id}' class='btn btn-danger'><i
+            echo "<td>
+                    <ul class='take-action'>
+                    <li><a href='comments.php?approve={$comment_id}' class='btn btn-success'><i class='fa fa-check'></i></a></li>
+                    <li><a href='comments.php?unapprove={$comment_id}' class='btn btn-warning'><i class='fa fa-times'></i></a></li>
+                    <li><a onclick=\"javascript:; return confirm('Are you sure you want to delete')\" href='comments.php?delete={$comment_id}' class='btn btn-danger'><i
                  class='fa fa-trash-o'></i> 
-                </a>
-</td>";
+                </a></li>
+                    </ul>
+                  </td>";
         }
 
         ?>

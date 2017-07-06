@@ -2,7 +2,6 @@
 <!-- sidebar menu -->
 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
     <div class="menu_section">
-        <h3>General</h3>
         <ul class="nav side-menu">
             <li>
                 <a href="index.php"><i class="fa fa-home"></i>
@@ -36,6 +35,11 @@
                     <li><a href="users.php">View All Users</a></li>
                     <li><a href="users.php?source=add_user">Add User</a></li>
                 </ul>
+            </li>
+            <li>
+                <a href="subscribers.php"><i class="fa fa-user"></i>
+                    Subscribers
+                </a>
             </li>
             <li>
                 <a href="profile.php"><i class="fa fa-user-secret"></i>

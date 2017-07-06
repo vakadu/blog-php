@@ -44,7 +44,7 @@ include "admin/functions.php";
                     <div class="col-md-3">
                         <div class="kwiqpick-logo">
                             <a href="index.php">
-                                <img src="images/Kwiqpick_Logo.png" alt="Kwiqpick">
+                                <img src="images/KWIQPICK_Logo_1150x250.png" alt="Kwiqpick">
                             </a>
                         </div>
                     </div>
@@ -53,3 +53,42 @@ include "admin/functions.php";
         </div>
     </div>
 </header>
+
+
+
+<!--<nav id="mainNav" class="navbar navbar-custom">-->
+<!--    <div class="container">-->
+<!--        <!-- Brand and toggle get grouped for better mobile display -->
+<!--        <div class="navbar-header page-scroll">-->
+<!--            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
+<!--                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>-->
+<!--            </button>-->
+<!--            <a class="navbar-brand kwiqpick-logo" href="index.php"><img src="images/KWIQPICK_Logo_1150x250.png"></a>-->
+<!--        </div>-->
+<!---->
+<!--        <!-- Collect the nav links, forms, and other content for toggling -->
+<!--        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+<!--            <ul class="nav navbar-nav navbar-right">-->
+<!--                <li class="hidden">-->
+<!--                    <a href="#page-top"></a>-->
+<!--                </li>-->
+<!--                --><?php
+//
+//                $query = "SELECT * FROM categories ORDER BY cat_id DESC LIMIT 4";
+//                $select_query = mysqli_query($connection, $query);
+//                confirmQuery($select_query);
+//                while ($row = mysqli_fetch_assoc($select_query)){
+//
+//                    $cat_id = $row['cat_id'];
+//                    $cat_title = $row['cat_title'];
+//
+//                    echo "<li> <a class='active' href='category.php?category=$cat_id&title=$cat_title'>{$cat_title}</a></li>";
+//                }
+//
+//                ?>
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <!-- /.navbar-collapse -->
+<!--    </div>-->
+<!--    <!-- /.container-fluid -->
+<!--</nav>-->

@@ -2480,15 +2480,7 @@ if (typeof NProgress != 'undefined') {
 					  dom: "Bfrtip",
 					  buttons: [
 						{
-						  extend: "copy",
-						  className: "btn-sm"
-						},
-						{
 						  extend: "csv",
-						  className: "btn-sm"
-						},
-						{
-						  extend: "excel",
 						  className: "btn-sm"
 						},
 						{

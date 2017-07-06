@@ -55,7 +55,7 @@ function add_post(){
         $post_status = $_POST['status'];
         $post_image = $_FILES['image']['name'];
         $post_tmp_image = $_FILES['image']['tmp_name'];
-        $post_date = date('d-m-y');
+        $post_date  = date("d-m-Y h:i:s A l");
         $post_tags = $_POST['tags'];
         $post_content = $_POST['content'];
         $post_content = str_replace("'", "''", $post_content);
@@ -64,7 +64,7 @@ function add_post(){
         move_uploaded_file($post_tmp_image, "../images/$post_image");
 
         $query  = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) ";
-        $query .= "VALUES({$post_category_id}, '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_content}', '{$post_tags}', '{$post_comment_count}', '{$post_status}')";
+        $query .= "VALUES({$post_category_id}, '{$post_title}', '{$post_author}', '{$post_date}', '{$post_image}', '{$post_content}', '{$post_tags}', '{$post_comment_count}', '{$post_status}')";
 
         $insert_query = mysqli_query($connection, $query);
         if (!$insert_query){

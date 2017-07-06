@@ -20,11 +20,12 @@
                         '<div class="alert alert-danger alert-dismissable text-center">
              <a href="#" class="close" data-dismiss="alert" 
              aria-label="close">&times;</a>
-             <strong>Error!</strong> No results found.
+             <strong>Oops!</strong> No results found.
         </div>';
                     } else {
                         while ($row = mysqli_fetch_assoc($search_query)) {
                             $post_title = $row['post_title'];
+                            $post_category_id = $row['post_category_id'];
                             $post_author = $row['post_author'];
                             $post_date = $row['post_date'];
                             $post_image = $row['post_image'];
@@ -42,8 +43,21 @@
                                 <ul>
                                     <li><a href="javascript:void(0)"> <i class="fa
                                         fa-calendar">&nbsp;&nbsp;<?php echo $post_date ?></i></a></li>
-                                    <li><a href="#"><i class="fa
-                                        fa-user">&nbsp;</i> <?php echo $post_author; ?></a></li>
+                                    <li><a href="authors_post.php?author=<?php echo
+                                        $post_author?>&p_id=<?php echo $post_id; ?>" target="_blank"><i class="fa fa-user">&nbsp;</i> <?php echo $post_author; ?></a>
+                                    </li>
+                                    <?php
+                                    $query = "SELECT * FROM categories WHERE cat_id = {$post_category_id}";
+                                    $select_cat_query = mysqli_query($connection, $query);
+                                    confirmQuery($select_cat_query);
+                                    while ($row = mysqli_fetch_assoc($select_cat_query)){
+
+                                        $cat_id = $row['cat_id'];
+                                        $cat_title = $row['cat_title'];
+
+                                        echo "<li><a href='category.php?category=$cat_id&title=$cat_title'><i class='fa fa-folder-open-o'>&nbsp;</i> {$cat_title}</a> </li>";
+                                    }
+                                    ?>
                                 </ul>
                             </div>
                         </div>

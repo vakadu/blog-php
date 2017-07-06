@@ -17,3 +17,4 @@ $back_to_top.on('click', function(event) {
         scrollTop: 0,
     }, scroll_top_duration);
 });
+

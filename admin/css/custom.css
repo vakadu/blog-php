@@ -4279,3 +4279,13 @@ a.morelink {
     display: none;
 
 }
+
+ul.take-action{
+    display: block;
+    list-style: none;
+    padding: 0;
+}
+
+ul.take-action li{
+    display: inline-block;
+}

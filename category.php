@@ -15,6 +15,7 @@
                 $select_all_posts = mysqli_query($connection, $query);
                 while ($row = mysqli_fetch_assoc($select_all_posts)) {
                     $post_id = $row['post_id'];
+                    $post_category_id = $row['post_category_id'];
                     $post_title = $row['post_title'];
                     $post_author = $row['post_author'];
                     $post_date = $row['post_date'];
@@ -37,6 +38,18 @@
                                             $post_author?>&p_id=<?php echo $post_id; ?>"><i
                                                     class="fa fa-user">&nbsp;</i> <?php echo $post_author; ?></a>
                                         </li>
+                                        <?php
+                                        $query = "SELECT * FROM categories WHERE cat_id = {$post_category_id}";
+                                        $select_cat_query = mysqli_query($connection, $query);
+                                        confirmQuery($select_cat_query);
+                                        while ($row = mysqli_fetch_assoc($select_cat_query)){
+
+                                            $cat_id = $row['cat_id'];
+                                            $cat_title = $row['cat_title'];
+
+                                            echo "<li><a href='category.php?category=$cat_id&title=$cat_title'><i class='fa fa-folder-open-o'>&nbsp;</i> {$cat_title}</a> </li>";
+                                        }
+                                        ?>
                                     </ul>
                                 </div>
                             </div>

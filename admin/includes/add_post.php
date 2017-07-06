@@ -1,17 +1,17 @@
 <?php add_post(); ?>
 
-<form class="form-horizontal form-label-left" action="" method="post"
+<form class="form-horizontal form-label-left" action="" id="add-post-admin" method="post"
       enctype="multipart/form-data">
     <div class="item form-group">
         <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input id="title" class="form-control col-md-7 col-xs-12"
-                   name="title" placeholder="e.g Some title" type="text">
+                   name="title" placeholder="e.g Some title" type="text" required>
         </div>
     </div>
 
     <div class="item form-group">
         <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
-            <select class="form-control" name="category">
+            <select class="form-control" name="category" required>
                 <option value="">Choose Category</option>
 
                 <?php add_post_category(); ?>
@@ -23,13 +23,13 @@
     <div class="item form-group">
         <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input type="text" id="author" name="author" class="form-control col-md-7
-            col-xs-12" placeholder="Author Name">
+            col-xs-12" placeholder="Author Name" required>
         </div>
     </div>
 
     <div class="item form-group">
         <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
-            <select class="form-control" name="status">
+            <select class="form-control" name="status" required>
                 <option value="draft">Select Status</option>
                 <option value="publish">Publish</option>
                 <option value="draft">Draft</option>
@@ -40,20 +40,20 @@
     <div class="item form-group">
         <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input type="file" id="image" name="image" class="form-control col-md-7
-            col-xs-12">
+            col-xs-12" required>
         </div>
     </div>
 
     <div class="item form-group">
         <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
             <input type="text" id="tags" name="tags" class="form-control col-md-7
-            col-xs-12" placeholder="Tags">
+            col-xs-12" placeholder="Tags" required>
         </div>
     </div>
 
     <div class="item form-group">
         <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
-            <textarea name="content" id="content" cols="30" rows="6" class="form-control col-md-7 col-xs-12" placeholder="Content"></textarea>
+            <textarea name="content" id="content" cols="30" rows="6" class="form-control col-md-7 col-xs-12" placeholder="Content" required></textarea>
         </div>
     </div>
 

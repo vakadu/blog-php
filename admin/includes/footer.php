@@ -13,6 +13,8 @@
 <script src="vendors/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap -->
 <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Bootstrap Validator-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js"></script>
 <!-- Include all Editor plugins JS files. -->
 <script type="text/javascript" src="vendors/froala_editor/js/froala_editor.pkgd.min.js"></script>
 <!-- Include Code Mirror JS. -->
