@@ -55,7 +55,7 @@ function add_post(){
         $post_status = $_POST['status'];
         $post_image = $_FILES['image']['name'];
         $post_tmp_image = $_FILES['image']['tmp_name'];
-        $post_date  = date("d-m-Y h:i:s A l");
+        $post_date  = date("F j, Y");
         $post_tags = $_POST['tags'];
         $post_content = $_POST['content'];
         $post_content = str_replace("'", "''", $post_content);
@@ -239,15 +239,9 @@ function findAllCategories(){
         echo "<td>{$cat_id}</td>";
         echo "<td>{$cat_title}</td>";
         echo "<td>
-                <a href='#' class='btn btn-primary btn-xs'><i class='fa fa-folder'></i> View
+                <a href='categories.php?edit={$cat_id}' class='btn btn-info'><i class='fa fa-pencil'></i>
                 </a>
-              </td>";
-        echo "<td>
-                <a href='categories.php?edit={$cat_id}' class='btn btn-info btn-xs'><i class='fa fa-pencil'></i div> Edit
-                </a>
-               </td>";
-        echo "<td>
-                <a href='categories.php?delete={$cat_id}' class='btn btn-danger btn-xs'><i class='fa fa-trash-o'></i> Delete
+                <a onclick=\"javascript:; return confirm('Are you sure you want to delete')\" href='categories.php?delete={$cat_id}' class='btn btn-danger'><i class='fa fa-trash-o'></i>
                 </a>
                </td>";
         echo "</tr>";
@@ -326,6 +320,5 @@ function recordCount($table){
     $query = "SELECT * FROM " . $table;
     $select_query = mysqli_query($connection, $query);
     $count_rows = mysqli_num_rows($select_query);
-    confirmQuery($count_rows);
     return $count_rows;
 }

@@ -17,16 +17,18 @@
 
                     $user_image = $row['user_image'];
 
-                    ?>
-                    <img src="../images/<?php echo $user_image; ?>" alt="No Image"
-                         class="img-circle profile_img">
-                    <?php
+                    if (empty($user_image)){
+                        echo "<img src='../images/default_image.png' alt='' class='img-circle profile_img'>";
+                    }
+                    else{
+                        echo "<img src='../images/$user_image' alt=''  class='img-circle profile_img'>" . $_SESSION['username'];
+                    }
                 }
                 ?>
             </div>
             <div class="profile_info">
                 <span>Welcome,</span>
-                <h2><?php echo strtoupper($_SESSION['username'])?></h2>
+                <h2><?php echo strtoupper($_SESSION['firstname'])?></h2>
             </div>
         </div>
         <!-- /menu profile quick info -->

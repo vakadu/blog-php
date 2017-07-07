@@ -26,7 +26,7 @@
                 $count = ceil($count / $per_page);//for making number integer
 
 
-                $query = "SELECT * FROM posts WHERE post_status = 'publish' ORDER BY post_date DESC LIMIT $page_1, $per_page";
+                $query = "SELECT * FROM posts WHERE post_status = 'publish' ORDER BY publish_date DESC LIMIT $page_1, $per_page";
                 $select_all_posts = mysqli_query($connection, $query);
                 while ($row = mysqli_fetch_assoc($select_all_posts)) {
                     $post_id = $row['post_id'];
@@ -35,7 +35,7 @@
                     $post_author = $row['post_author'];
                     $post_date = $row['post_date'];
                     $post_image = $row['post_image'];
-                    $post_content = substr($row['post_content'], 0, 500) . " [.....]";
+                    $post_content = substr($row['post_content'], 0, 500) . " ...";
                     $post_status = $row['post_status'];
 
                     ?>
@@ -68,7 +68,11 @@
                             </div>
                         </div>
                         <div class="article-body">
-                            <img src="images/<?php echo $post_image; ?>" alt="Image">
+                            <?php
+                            if ($post_image != NULL){
+                                echo "<img src='images/{$post_image}?>' alt='Image not displayed'>";
+                            }
+                            ?>
                             <p>
                                 <?php echo $post_content; ?>
                             </p>

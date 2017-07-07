@@ -62,9 +62,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Title</th>
-                                <th>View</th>
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                <th>Take Action</th>
                             </tr>
                             </thead>
                             <tbody>

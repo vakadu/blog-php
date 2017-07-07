@@ -17,10 +17,12 @@
 
                             $user_image = $row['user_image'];
 
-                            ?>
-                            <img src="../images/<?php echo $user_image; ?>" alt=""><?php echo
-                            ucfirst($_SESSION['username']);?>
-                            <?php
+                            if (empty($user_image)){
+                                echo "<img src='../images/default_image.png' alt=''>" . $_SESSION['username'];
+                            }
+                            else{
+                                echo "<img src='../images/$user_image' alt=''>" . $_SESSION['username'];
+                            }
                         }
                         ?>
                         <span class=" fa fa-angle-down"></span>

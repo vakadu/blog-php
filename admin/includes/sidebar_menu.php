@@ -27,17 +27,34 @@
                     Comments
                 </a>
             </li>
+            <?php
+            $query = "SELECT * FROM users";
+            $select_query = mysqli_query($connection, $query);
+            confirmQuery($select_query);
+            while ($row = mysqli_fetch_assoc($select_query)) {
+
+                $user_id = $row['user_id'];
+                $username = $row['username'];
+                $user_role = $row['user_role'];
+
+
+                if ($username == $_SESSION['username'] && $_SESSION['user_role'] == 'Admin'){
+
+                    echo "<li>
+                            <a href='javascript:;'><i class='fa fa-users'></i> Users
+                                <span class='fa fa-chevron-down'></span>
+                            </a>
+                            <ul class='nav child_menu'>
+                                <li><a href='users.php'>View All Users</a></li>
+                                <li><a href='users.php?source=add_user'>Add User</a></li>
+                            </ul>
+                           </li>";
+                }
+            }
+            ?>
+
             <li>
-                <a href="javascript:;"><i class="fa fa-users"></i> Users
-                    <span class="fa fa-chevron-down"></span>
-                </a>
-                <ul class="nav child_menu">
-                    <li><a href="users.php">View All Users</a></li>
-                    <li><a href="users.php?source=add_user">Add User</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="subscribers.php"><i class="fa fa-user"></i>
+                <a href="subscribers.php"><i class="fa fa-envelope"></i>
                     Subscribers
                 </a>
             </li>

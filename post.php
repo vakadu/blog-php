@@ -94,7 +94,7 @@ if (isset($_GET['p_id'])){
                     $comment_author = $_POST['name'];
                     $comment_email = $_POST['email'];
                     $comment_content = $_POST['content'];
-                    $comment_date = date("d-m-Y h:i:s A l");
+                    $comment_date = date("F j, Y");
 
                     if (!empty($comment_author) && !empty($comment_email) && !empty
                         ($comment_content)){

@@ -18,7 +18,7 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .main-content {
-    background: url("../images/login.jpeg") no-repeat center center fixed;
+    background: url("../images/Blog_Login_Background.jpg") no-repeat center center fixed;
     /*background: url("hero-bg.jpg") no-repeat center center fixed;*/
     -webkit-background-size: cover;
     -moz-background-size: cover;

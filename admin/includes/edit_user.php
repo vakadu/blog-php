@@ -73,28 +73,36 @@ if (isset($_POST['update_user'])){
 <form class="form-horizontal form-label-left" action="" method="post"
       enctype="multipart/form-data">
     <div class="item form-group">
-        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
+        <label class="control-label col-md-2 col-sm-12 col-xs-12" for="first_name">First Name
+        </label>
+        <div class="col-md-10 col-sm-12 col-xs-12">
             <input id="firstname" class="form-control col-md-7 col-xs-12"
                    name="first_name" type="text" value="<?php echo $user_firstname; ?>">
         </div>
     </div>
 
     <div class="item form-group">
-        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
+        <label class="control-label col-md-2 col-sm-12 col-xs-12" for="last_name">Last Name
+        </label>
+        <div class="col-md-10 col-sm-12 col-xs-12">
             <input id="lastname" class="form-control col-md-7 col-xs-12"
                    name="last_name" type="text" value="<?php echo $user_lastname; ?>">
         </div>
     </div>
 
     <div class="item form-group">
-        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
+        <label class="control-label col-md-2 col-sm-12 col-xs-12" for="username">Username
+        </label>
+        <div class="col-md-10 col-sm-12 col-xs-12">
             <input id="username" class="form-control col-md-7 col-xs-12"
                    name="username" type="text" value="<?php echo $username; ?>">
         </div>
     </div>
 
     <div class="item form-group">
-        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
+        <label class="control-label col-md-2 col-sm-12 col-xs-12" for="user_image">Image
+        </label>
+        <div class="col-md-10 col-sm-12 col-xs-12">
             <img src="../images/<?php echo $user_image; ?>" width="200" alt="Image not
             displayed" class="img-responsive">
             <input type="file" id="user_image" name="user_image" class="form-control col-md-7
@@ -103,7 +111,9 @@ if (isset($_POST['update_user'])){
     </div>
 
     <div class="item form-group">
-        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
+        <label class="control-label col-md-2 col-sm-12 col-xs-12" for="role">Role
+        </label>
+        <div class="col-md-10 col-sm-12 col-xs-12">
             <select class="form-control" name="role">
                 <option value="<?php echo $user_role; ?>"><?php echo $user_role; ?></option>
                 <?php
@@ -119,14 +129,18 @@ if (isset($_POST['update_user'])){
     </div>
 
     <div class="item form-group">
-        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
+        <label class="control-label col-md-2 col-sm-12 col-xs-12" for="user_email">Email
+        </label>
+        <div class="col-md-10 col-sm-12 col-xs-12">
             <input id="user_email" class="form-control col-md-7 col-xs-12"
                    name="user_email" type="email" value="<?php echo $user_email; ?>">
         </div>
     </div>
 
     <div class="item form-group">
-        <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
+        <label class="control-label col-md-2 col-sm-12 col-xs-12" for="user_password">Password
+        </label>
+        <div class="col-md-10 col-sm-12 col-xs-12">
             <input id="password" class="form-control col-md-7 col-xs-12"
                    name="user_password" type="password" value="<?php echo $user_password; ?>">
         </div>
@@ -134,7 +148,7 @@ if (isset($_POST['update_user'])){
 
     <div class="ln_solid"></div>
     <div class="form-group">
-        <div class="col-md-6 col-md-offset-1">
+        <div class="col-md-6 col-md-offset-2">
             <button id="user-submit" name="update_user" type="submit" class="btn
             btn-success">Submit</button>
         </div>

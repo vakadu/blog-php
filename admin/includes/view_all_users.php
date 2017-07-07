@@ -31,7 +31,12 @@
         echo "<tr>";
         echo "<td>{$user_id}</td>";
         echo "<td>{$username}</td>";
-        echo "<td><img src='../images/{$user_image}' height='40px'></td>";
+        if (empty($user_image)){
+            echo "<td><img src='../images/default_image.png' height='40px'></td>";
+        }
+        else{
+            echo "<td><img src='../images/{$user_image}' height='40px'></td>";
+        }
         echo "<td>{$user_firstname}</td>";
         echo "<td>{$user_lastname}</td>";
         echo "<td>{$user_email}</td>";

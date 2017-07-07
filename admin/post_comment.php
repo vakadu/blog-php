@@ -68,12 +68,12 @@
                                     echo "<td>{$comment_status}</td>";
                                     echo "<td>{$comment_date}</td>";
                                     echo "<td>
-                                    <a href='post_comment.php?approve={$comment_id}&id=". $_GET['id'] ."' class='btn btn-success'><i class='fa fa-check'></i> </a>
-                                    <br>
-                                    <a href='post_comment.php?unapprove={$comment_id}&id=". $_GET['id'] ."' class='btn btn-success'><i class='fa fa-times'></i></a>
-                                    <br>
-                                    <a onclick=\"javascript:; return confirm('Are you sure you want to delete')\" href='post_comment.php?delete={$comment_id}&id=". $_GET['id'] ."' class='btn btn-danger'><i class='fa fa-trash-o'></i></a>
-                                    </td>";
+                                            <ul class='take-action'>
+                                            <li><a href='post_comment.php?approve={$comment_id}&id=". $_GET['id'] ."' class='btn btn-success'><i class='fa fa-check'></i> </a></li>
+                                            <li><a href='post_comment.php?unapprove={$comment_id}&id=". $_GET['id'] ."' class='btn btn-success'><i class='fa fa-times'></i></a></li>
+                                            <li><a onclick=\"javascript:; return confirm('Are you sure you want to delete')\" href='post_comment.php?delete={$comment_id}&id=". $_GET['id'] ."' class='btn btn-danger'><i class='fa fa-trash-o'></i></a></li>
+                                            </ul>
+                                          </td>";
                                     echo "</tr>";
                                 }
 

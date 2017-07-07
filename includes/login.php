@@ -22,8 +22,7 @@
 
                         <div class="form-group">
                             <div class="input animated slideInRight">
-                                <input class="input_fields" placeholder="Password" type="text"
-                                       name="password">
+                                <input class="input_fields" placeholder="Password" type="password" name="password">
                                 <label class="input_label">
                                     <i class="fa fa-fw fa-lock icon"></i>
                                 </label>

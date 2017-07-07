@@ -42,8 +42,8 @@ if (isset($_POST['checkBoxArray'])){
                 </select>
             </div>
             <div class="col-xs-4">
-                <input type="submit" name="submit" class="btn btn-primary" value="Apply">
-                <a class="btn btn-primary" href="posts.php?source=add_post">Add New</a>
+                <input type="submit" name="submit" class="btn btn-success" value="Apply">
+                <a class="btn btn-success" href="posts.php?source=add_post">Add New</a>
             </div>
         </div>
     </div>
@@ -102,7 +102,7 @@ if (isset($_POST['checkBoxArray'])){
             <?php
             echo "<td>{$post_id}</td>";
             echo "<td>{$post_author}</td>";
-            echo "<td class='col-sm-1 readextra'>{$post_title}</td>";
+            echo "<td class='col-sm-1'>{$post_title}</td>";
             echo "<td>{$category_title}</td>";
             echo "<td>{$post_status}</td>";
             echo "<td><img src='../images/{$post_image}' height='40px'></td>";
@@ -117,11 +117,11 @@ if (isset($_POST['checkBoxArray'])){
             echo "<td><a href='post_comment.php?id={$post_id}' style='color: #169F85' </i> {$comment_count}</a></td>";
 
             echo "<td>{$post_date}</td>";
-            echo "<td>
+            echo "<td class='col-sm-2'>
                     <ul class='take-action'>
                     <li><a href='../post.php?p_id={$post_id}' class='btn btn-success'><i class='fa fa-folder'></i>
                 </a></li>
-                    <li><a href='posts.php?source=edit_post&p_id={$post_id}' class='btn btn-info '><i class='fa fa-pencil'></i> 
+                    <li><a href='posts.php?source=edit_post&p_id={$post_id}' class='btn btn-info'><i class='fa fa-pencil'></i> 
                 </a></li>
                     <li><a onclick=\"javascript:; return confirm('Are you sure you want to delete')\" href='posts.php?delete={$post_id}' class='btn btn-danger'><i
                  class='fa fa-trash-o'></i> 

@@ -29,7 +29,7 @@
                 echo "<script>alert('You have already subscribed')</script>";
             }
             else{
-                $subscriber_time  = date("d-m-Y h:i:s A l");
+                $subscriber_time  = date("F j, Y");
                 $query  = "INSERT INTO subscribers(subscriber_email, subscriber_time) ";
                 $query .= "VALUES('{$subscribe_email}', '{$subscriber_time}')";
                 $insert_query = mysqli_query($connection, $query);

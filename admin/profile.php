@@ -67,7 +67,14 @@ if (isset($_SESSION['username'])){
 
                             <div class="item form-group">
                                 <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
-                                    <img src="../images/<?php echo $user_image; ?>" width="200" alt="Image not displayed" class="img-responsive">
+                                    <?php
+                                    if (empty($user_image)){
+                                        echo "<img src='../images/default_image.png' width='200' alt='' class='img-responsive'>";
+                                    }
+                                    else{
+                                        echo "<img src='../images/$user_image' width='200' alt='' class='img-responsive'>";
+                                    }
+                                    ?>
                                     <input type="file" id="user_image" name="user_image" class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
