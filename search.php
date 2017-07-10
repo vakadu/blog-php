@@ -24,6 +24,7 @@
         </div>';
                     } else {
                         while ($row = mysqli_fetch_assoc($search_query)) {
+                            $post_id = $row['post_id'];
                             $post_title = $row['post_title'];
                             $post_category_id = $row['post_category_id'];
                             $post_author = $row['post_author'];
@@ -62,8 +63,11 @@
                             </div>
                         </div>
                         <div class="article-body">
-                            <img src="images/<?php echo $post_image; ?>" alt="Image">
-                            <p>
+                            <?php
+                            if ($post_image != NULL){
+                                echo "<img src='images/{$post_image}?>' alt='Image not displayed'>";
+                            }
+                            ?>                            <p>
                                 <?php echo $post_content; ?>
                             </p>
                         </div>

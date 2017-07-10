@@ -38,7 +38,7 @@
             }
         }
         else{
-            echo "<script>alert('Subscriber field cannot be empty')</script>";
+            echo "<script>alert('Please enter email address')</script>";
         }
     }
     ?>
@@ -54,7 +54,7 @@
             And i will not spam promise.</p>
         <div class="widget-forms">
             <form class="subscribe-form" method="post">
-                <input type="email" name="subscribe_email" placeholder="e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+                <input type="email" name="subscribe_email" placeholder="e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
                 <button type="submit" class="sidebar-button button-color" name="subscribe">Subscribe</button>
             </form>
         </div>
