@@ -21,7 +21,7 @@
                         echo "<img src='../images/default_image.png' alt='' class='img-circle profile_img'>";
                     }
                     else{
-                        echo "<img src='../images/$user_image' alt=''  class='img-circle profile_img'>" . $_SESSION['username'];
+                        echo "<img src='../images/$user_image' alt=''  class='img-circle profile_img'>";
                     }
                 }
                 ?>
