@@ -71,8 +71,17 @@ if (isset($_GET['p_id'])){
 
                                     <?php
 
+//                                    $query = "SELECT * FROM tags";
+//                                    $select_categories = mysqli_query($connection, $query);
+//                                    while ($row = mysqli_fetch_assoc($select_categories)){
+//
+//                                        $tag_id = $row['tag_id'];
+//                                        $tag_name = $row['tag_name'];
+//                                        echo "<a href='tags.php?tag=$tag_id&title=$tag_name'>{$tag_name}</a>";
+//                                    }
+
                                     foreach ($post_tags as $post_tag) {
-                                        echo '<a href="#">'.$post_tag.'</a>';
+                                        echo "<a href='tags.php?tag=$post_tag'>{$post_tag}</a>";
                                     }
                                     ?>
                                 </div>

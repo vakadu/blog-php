@@ -67,7 +67,8 @@
                             if ($post_image != NULL){
                                 echo "<img src='images/{$post_image}?>' alt='Image not displayed'>";
                             }
-                            ?>                            <p>
+                            ?>
+                            <p>
                                 <?php echo $post_content; ?>
                             </p>
                         </div>

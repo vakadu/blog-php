@@ -34,6 +34,8 @@ if (isset($_POST['update_post'])){
     $post_date  = date("F j, Y");
     $post_content = $_POST['content'];
     $post_content = str_replace("'", "''", $post_content);
+    $post_tags = explode(",", $post_tags);
+    $post_tags = implode(", ", $post_tags);
 
     move_uploaded_file($post_tmp_image, "../images/$post_image");
 

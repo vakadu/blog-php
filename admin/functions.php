@@ -60,6 +60,8 @@ function add_post(){
         $post_content = $_POST['content'];
         $post_content = str_replace("'", "''", $post_content);
         $post_comment_count = 0;
+        $post_tags = explode(",", $post_tags);
+        $post_tags = implode(", ", $post_tags);
 
         move_uploaded_file($post_tmp_image, "../images/$post_image");
 
