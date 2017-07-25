@@ -20,7 +20,12 @@
                     $post_author = $row['post_author'];
                     $post_date = $row['post_date'];
                     $post_image = $row['post_image'];
-                    $post_content = substr($row['post_content'], 0, 500) . " [.....]";
+                    if (strlen($row['post_content']) > 500){
+                        $post_content = substr($row['post_content'], 0, 500) . " ...";
+                    }
+                    else{
+                        $post_content = $row['post_content'];
+                    }
                     $post_status = $row['post_status'];
 
                     ?>
@@ -65,8 +70,14 @@
                             <div class="article-footer">
                                 <div class="row">
                                     <div class="col-md-5 col-sm-12 col-xs-12">
-                                        <a href="post.php?p_id=<?php echo $post_id; ?>"
-                                           class="button blog-button">Read More</a>
+                                        <?php
+                                        if (strlen($post_content) > 500) {
+                                            ?>
+                                            <a href="post.php?p_id=<?php echo $post_id; ?>"
+                                               class="button blog-button" target="_blank">Read More</a>
+                                            <?php
+                                        }
+                                        ?>
                                     </div>
                                     <div class="col-md-7 col-sm-12 col-xs-12">
                                         <div class="share-social-article">

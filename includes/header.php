@@ -16,9 +16,9 @@ include "admin/functions.php";
     <!-- Kwiqpick Blog Page -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="generator" content="Kwiqpick - Responsive Blog Landing Page">
+    <meta name="generator" content="Kwiqpick">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" lang="en" content="Kwiqpick - Responsive Blog Landing Page">
+    <meta name="description" lang="en" content="Kwiqpick">
     <meta name="keywords" lang="en" content="Kwiqpick, blog, landing blog page,
     mobile-landing page, responsive, responsive blog page,
     fully responsive">

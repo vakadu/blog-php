@@ -29,7 +29,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-usermenu pull-right">
                         <li><a href="profile.php"> Profile</a></li>
-                        <li><a href="../includes/logout.php"><i class="fa fa-sign-out
+                        <li><a href="../logout.php"><i class="fa fa-sign-out
                         pull-right"></i> Log Out</a></li>
                     </ul>
                 </li>

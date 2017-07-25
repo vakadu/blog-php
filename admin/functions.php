@@ -171,7 +171,7 @@ function login_user(){
 
         if ($username !== $db_username && $password !== $db_password){
 
-            redirect("../index.php");
+            redirect("login.php");
         }
         elseif (password_verify($password, $db_password)){
 
@@ -179,11 +179,11 @@ function login_user(){
             $_SESSION['firstname'] = $db_user_firstname;
             $_SESSION['lastname'] = $db_user_lastname;
             $_SESSION['user_role'] = $db_role;
-            redirect("../admin");
+            redirect("admin");
         }
         else{
 
-            redirect("../index.php");
+            redirect("login.php");
         }
 
 //    login_user($_POST['username'], $_POST['password']);
@@ -276,7 +276,7 @@ function update_profile(){
         $user_role = $_POST['role'];
         $user_email = $_POST['user_email'];
         $user_password = $_POST['user_password'];
-        //$user_password = password_hash($user_password, PASSWORD_BCRYPT);
+        $user_password = password_hash($user_password, PASSWORD_BCRYPT);
 
         move_uploaded_file($user_tmp_image, "../images/$user_image");
 

@@ -70,18 +70,8 @@ if (isset($_GET['p_id'])){
                                 <div class="col-md-12 blog-tags pull-right">
 
                                     <?php
-
-//                                    $query = "SELECT * FROM tags";
-//                                    $select_categories = mysqli_query($connection, $query);
-//                                    while ($row = mysqli_fetch_assoc($select_categories)){
-//
-//                                        $tag_id = $row['tag_id'];
-//                                        $tag_name = $row['tag_name'];
-//                                        echo "<a href='tags.php?tag=$tag_id&title=$tag_name'>{$tag_name}</a>";
-//                                    }
-
                                     foreach ($post_tags as $post_tag) {
-                                        echo "<a href='tags.php?tag=$post_tag'>{$post_tag}</a>";
+                                        echo "<a href='tags.php?tag=$post_tag'>#{$post_tag}</a>";
                                     }
                                     ?>
                                 </div>
@@ -126,9 +116,9 @@ if (isset($_GET['p_id'])){
                 <article class="article-item">
                     <div class="enter-media">
                         <div class="article-heading hasMargin">
-                            <h2>
+                            <h3>
                                 Leave a Reply
-                            </h2>
+                            </h3>
                         </div>
                         <div class="article-body article-comments">
                             <form method="post" id="comment-form">

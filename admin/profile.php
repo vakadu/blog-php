@@ -48,25 +48,29 @@ if (isset($_SESSION['username'])){
                         <form class="form-horizontal form-label-left" action="" method="post"
                               enctype="multipart/form-data">
                             <div class="item form-group">
-                                <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
+                                <label class="control-label col-md-2 col-sm-12 col-xs-12" for="first_name">First Name </label>
+                                <div class="col-md-10 col-sm-12 col-xs-12">
                                     <input id="firstname" class="form-control col-md-7 col-xs-12" name="first_name" type="text" value="<?php echo $user_firstname; ?>">
                                 </div>
                             </div>
 
                             <div class="item form-group">
-                                <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
+                                <label class="control-label col-md-2 col-sm-12 col-xs-12" for="last_name">Last Name </label>
+                                <div class="col-md-10 col-sm-12 col-xs-12">
                                     <input id="lastname" class="form-control col-md-7 col-xs-12" name="last_name" type="text" value="<?php echo $user_lastname; ?>">
                                 </div>
                             </div>
 
                             <div class="item form-group">
-                                <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
+                                <label class="control-label col-md-2 col-sm-12 col-xs-12" for="username">Username </label>
+                                <div class="col-md-10 col-sm-12 col-xs-12">
                                     <input id="username" class="form-control col-md-7 col-xs-12" name="username" type="text" value="<?php echo $username; ?>">
                                 </div>
                             </div>
 
                             <div class="item form-group">
-                                <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
+                                <label class="control-label col-md-2 col-sm-12 col-xs-12" for="user_image">Image </label>
+                                <div class="col-md-10 col-sm-12 col-xs-12">
                                     <?php
                                     if (empty($user_image)){
                                         echo "<img src='../images/default_image.png' width='200' alt='' class='img-responsive'>";
@@ -79,30 +83,38 @@ if (isset($_SESSION['username'])){
                                 </div>
                             </div>
 
-                            <div class="item form-group">
-                                <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
-                                    <select class="form-control" name="role">
-                                        <option value="Subscriber"><?php echo $user_role; ?></option>
-                                        <?php
-                                        if ($user_role == 'Admin'){
-                                            echo "<option value='Subscriber'>Subscriber</option>";
-                                        }
-                                        else {
-                                            echo "<option value='Admin'>Admin</option>";
-                                        }
-                                        ?>
-                                    </select>
+                            <?php
+                            if (!strcasecmp($user_role, "Admin")) {
+                                ?>
+                                <div class="item form-group">
+                                    <label class="control-label col-md-2 col-sm-12 col-xs-12" for="role">Role </label>
+                                    <div class="col-md-10 col-sm-12 col-xs-12">
+                                        <select class="form-control" name="role">
+                                            <option value="Subscriber"><?php echo $user_role; ?></option>
+                                            <?php
+                                            if ($user_role == 'Admin') {
+                                                echo "<option value='Subscriber'>Subscriber</option>";
+                                            } else {
+                                                echo "<option value='Admin'>Admin</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
+                                <?php
+                            }
+                            ?>
 
                             <div class="item form-group">
-                                <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
+                                <label class="control-label col-md-2 col-sm-12 col-xs-12" for="user_email">Email </label>
+                                <div class="col-md-10 col-sm-12 col-xs-12">
                                     <input id="user_email" class="form-control col-md-7 col-xs-12" name="user_email" type="email" value="<?php echo $user_email; ?>">
                                 </div>
                             </div>
 
                             <div class="item form-group">
-                                <div class="col-md-10 col-sm-12 col-xs-12 marginLeft">
+                                <label class="control-label col-md-2 col-sm-12 col-xs-12" for="user_password">Password </label>
+                                <div class="col-md-10 col-sm-12 col-xs-12">
                                     <input id="password" class="form-control col-md-7 col-xs-12" name="user_password" type="password" value="<?php echo $user_password; ?>">
                                 </div>
                             </div>
