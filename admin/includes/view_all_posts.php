@@ -119,7 +119,7 @@ if (isset($_POST['checkBoxArray'])){
             echo "<td>{$post_date}</td>";
             echo "<td class='col-sm-2'>
                     <ul class='take-action'>
-                    <li><a href='../post.php?p_id={$post_id}' class='btn btn-success'><i class='fa fa-folder'></i>
+                    <li><a href='../post.php?p_id={$post_id}' class='btn btn-success' target='_blank'><i class='fa fa-folder'></i>
                 </a></li>
                     <li><a href='posts.php?source=edit_post&p_id={$post_id}' class='btn btn-info'><i class='fa fa-pencil'></i> 
                 </a></li>

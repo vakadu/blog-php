@@ -306,6 +306,11 @@ form textarea:-ms-input-placeholder {
     outline: none;
 }
 
+@media (max-width: 991px) {
+    .sidebar-button.button-color{
+        right: -70px;
+    }
+}
 
 /**
  *	-------------------------------------------------------------------------------
@@ -571,6 +576,12 @@ article.article-item .article-footer .share-social-article a i {
     transition: all 0.5s ease-in-out;
 }
 
+@media (max-width: 991px) {
+    .article-body img{
+        margin-top: 20px;
+    }
+}
+
 /**
  *	-------------------------------------------------------------------------------
  *	 ( 05 ) - Pagination
@@ -821,6 +832,12 @@ article.article-item .article-footer .share-social-article a i {
     margin-bottom: 0;
 }
 
+@media (max-width: 991px) {
+    .color-widget{
+        min-height: 400px;
+    }
+}
+
 /**
  *	-------------------------------------------------------------------------------
  *	 ( 07 ) - Comments
@@ -1004,6 +1021,7 @@ footer a:hover {
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
 }
+
 
 /**
  *	-------------------------------------------------------------------------------
